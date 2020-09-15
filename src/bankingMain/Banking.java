@@ -28,7 +28,7 @@ public class Banking {
         for(;;)
         {
             System.out.println("");
-            System.out.println("1: Savings Account   2:Current Account   3:More options");
+            System.out.println("1: Create Savings Account   2: Create Current Account   3:More options");
             System.out.println("Enter your choice");
             int choice = scan.nextInt();
             switch(choice)

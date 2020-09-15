@@ -45,32 +45,41 @@ public class CurrentDAO {
 	}
 	public void currentBalanceEnquiry(int ano) throws Exception
 	{
-		ResultSet rst = st.executeQuery("select amount from current where accno = ");
-		pst.setInt(1, ano);
-		System.out.println("Amount in your account is "+rst.getFloat(1));
+		ResultSet rst = pst.executeQuery("select balance from current where accno = "+ano);
+		while(rst.next())
+			System.out.println("Amount in your account is "+rst.getFloat(1));
 	}
 	public void currentWithdraw(int ano,float money) throws Exception
 	{
-		st.executeUpdate("update table current set amount=amount-money where accno = ?");
-		pst.setInt(1, ano);
+		st.executeUpdate("update current set balance=balance-? where accno = ?");
+		pst.setFloat(1, money);
+		pst.setInt(2, ano);
+		pst.executeUpdate();
 		System.out.println(money+" is debited from your account");
-		ResultSet rst = st.executeQuery("select amount from savings where accno = ?");
+		ResultSet rst = pst.executeQuery("select balance from savings where accno = ?");
 		pst.setInt(1, ano);
-		System.out.println("Remaining Balance is "+rst.getFloat(1));
+		pst.executeUpdate();
+		while(rst.next())
+			System.out.println("Remaining Balance is "+rst.getFloat(1));
 	}
 	public void currentDeposit(int ano,float money) throws Exception
 	{
-		st.executeUpdate("update table current set amount=amount+money where accno = ?");
+		pst.executeUpdate("update current set balance=balance+? where accno = ?");
+		pst.setFloat(1, money);
+		pst.setInt(2, ano);
+		pst.executeUpdate();
+		System.out.println(money+" is credited to your account");
+		ResultSet rst = pst.executeQuery("select balance from current where accno = ?");
 		pst.setInt(1, ano);
-		System.out.println(money+" is credited from your account");
-		ResultSet rst = st.executeQuery("select amount from current where accno = ?");
-		pst.setInt(1, ano);
-		System.out.println("Total Balance in your account is "+rst.getFloat(1));
+		pst.executeUpdate();
+		while(rst.next())
+			System.out.println("Total Balance in your account is "+rst.getFloat(1));
 	}
 	public void displayCurrentAccount(int ano) throws Exception
 	{
-		ResultSet rst = st.executeQuery("select * from current where accno = ?");
+		ResultSet rst = pst.executeQuery("select * from current where accno = ?");
 		pst.setInt(1, ano);
+		pst.executeUpdate();
 		while(rst.next())
 		{
 			System.out.println("Account Number: "+rst.getInt(1)+"\n"+"Account holder Name: "+rst.getString(2)+"\n"+"Amount: "+rst.getFloat(3));

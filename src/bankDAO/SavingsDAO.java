@@ -41,32 +41,39 @@ public class SavingsDAO {
 	}
 	public void savingsBalanceEnquiry(int ano) throws Exception
 	{
-		ResultSet rst = pst.executeQuery("select amount from savings where accno = ?");
+		ResultSet rst = pst.executeQuery("select balance from savings where accno = "+ano);
 		pst.setInt(1, ano);
+		pst.executeUpdate();
+		while(rst.next())
 		System.out.println("Amount in your account is "+rst.getFloat(1));
 	}
 	public void savingsWithdraw(int ano,float money) throws Exception
 	{
-		st.executeUpdate("update table savings set amount=amount-money where accno = ?");
-		pst.setInt(1, ano);
+		pst.executeUpdate("update savings set balance=balance-? where accno = ?");
+		pst.setFloat(1, money);
+		pst.setInt(2, ano);
 		System.out.println(money+" is debited from your account");
-		ResultSet rst = st.executeQuery("select amount from savings where accno = ?");
+		ResultSet rst = pst.executeQuery("select balance from savings where accno = ?");
 		pst.setInt(1, ano);
+		pst.executeUpdate();
 		System.out.println("Remaining Balance is "+rst.getFloat(1));
 	}
 	public void savingsDeposit(int ano,float money) throws Exception
 	{
-		st.executeUpdate("update table savings set amount=amount+money where accno = ?");
-		pst.setInt(1, ano);
+		pst.executeUpdate("update savings set balance=balance+? where accno = ?");
+		pst.setFloat(1, money);
+		pst.setInt(2, ano);
 		System.out.println(money+" is credited from your account");
-		ResultSet rst = st.executeQuery("select amount from savings where accno = ?");
+		ResultSet rst = pst.executeQuery("select balance from savings where accno = ?");
 		pst.setInt(1, ano);
+		pst.executeUpdate();
 		System.out.println("Total Balance in your account is "+rst.getFloat(1));
 	}
 	public void displaySavingsAccount(int ano) throws Exception
 	{
-		ResultSet rst = st.executeQuery("select * from savings where accno = ?");
+		ResultSet rst = pst.executeQuery("select * from savings where accno = ?");
 		pst.setInt(1, ano);
+		pst.executeUpdate();
 		while(rst.next())
 		{
 			System.out.println("Account Number: "+rst.getInt(1)+"\n"+"Account holder Name: "+rst.getString(2)+"\n"+"Amount: "+rst.getFloat(3));

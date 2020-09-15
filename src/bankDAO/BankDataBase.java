@@ -28,12 +28,13 @@ public class BankDataBase {
 		{
 			if(r.getString(1).equalsIgnoreCase("bank"))
 			{
-				st.executeQuery("use bank");
-				System.out.println("Using Bank Database");
+				st.executeUpdate("drop database bank");
 			}
 		}
 		st.executeUpdate("create database bank");
 		System.out.println("Bank Database created");
+		st.executeQuery("use bank");
+		System.out.println("Using Bank Database");
 		
 	}
 	
