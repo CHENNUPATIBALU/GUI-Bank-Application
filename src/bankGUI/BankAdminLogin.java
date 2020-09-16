@@ -31,11 +31,11 @@ public class BankAdminLogin extends WindowAdapter implements ActionListener{
 		t2 = new JTextField();
 		
 		b1 = new JButton("Login");
-		bs = new JButton("Savings");
-		bc = new JButton("Current");
+		bs = new JButton("Savings Account");
+		bc = new JButton("Current Account");
 		
-		bs.setBounds(80, 30, 100, 30);
-		bc.setBounds(80, 70, 100, 30);
+		bs.setBounds(130, 30, 200, 30);
+		bc.setBounds(130, 70, 200, 30);
 		
 		t1.setBounds(150, 40, 150, 30);
 		t2.setBounds(150, 90, 150, 30);
