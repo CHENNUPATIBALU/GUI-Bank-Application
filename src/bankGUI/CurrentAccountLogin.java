@@ -18,7 +18,7 @@ public class CurrentAccountLogin extends WindowAdapter implements ActionListener
 	JFrame f;
 	JTextField t1,t2;
 	JLabel l1,l2,l3,l4;
-	JButton b1;
+	JButton b1,bcreate;
 	
 	public CurrentAccountLogin()
 	{
@@ -33,6 +33,9 @@ public class CurrentAccountLogin extends WindowAdapter implements ActionListener
 		t2 = new JTextField();
 		
 		b1 = new JButton("Login");
+		bcreate = new JButton("SignUp");
+		
+		bcreate.setBounds(220, 130, 80, 20);
 		
 		t1.setBounds(150, 40, 150, 30);
 		t2.setBounds(150, 90, 150, 30);
@@ -50,6 +53,7 @@ public class CurrentAccountLogin extends WindowAdapter implements ActionListener
 		f.add(b1);
 		f.add(l3);
 		f.add(l4);
+		f.add(bcreate);
 		
 		l3.setVisible(false);
 		l4.setVisible(false);
@@ -86,6 +90,10 @@ public class CurrentAccountLogin extends WindowAdapter implements ActionListener
 		{
 			l4.setVisible(true);
 			l3.setVisible(false);
+		}
+		if(e.getSource()==bcreate)
+		{
+			
 		}
 		
 	}
