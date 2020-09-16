@@ -11,6 +11,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import customerUI.CurrentAccount;
+
 public class CurrentAccountLogin extends WindowAdapter implements ActionListener {
 
 	JFrame f;
@@ -72,7 +74,7 @@ public class CurrentAccountLogin extends WindowAdapter implements ActionListener
 	public void actionPerformed(ActionEvent e) {
 		if(t1.getText().equalsIgnoreCase("balu") && t2.getText().equalsIgnoreCase("abcd123") && e.getSource()==b1)
 		{
-			
+			new CurrentAccount();
 		}
 		else if(!t1.getText().equalsIgnoreCase("balu") && t2.getText().equalsIgnoreCase("abcd123") && e.getSource()==b1)
 		{

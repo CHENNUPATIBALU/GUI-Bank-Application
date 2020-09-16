@@ -11,14 +11,16 @@ import javax.swing.*;
 
 public class BankAdminLogin extends WindowAdapter implements ActionListener{
 	
-	JFrame f;
+	JFrame f,f1;
 	JLabel l1,l2,l3,l4;
 	JTextField t1,t2;
 	JButton b1;
+	JButton bs,bc;
 	
 	public BankAdminLogin()
 	{
 		f = new JFrame("Bank Admin");
+		f1 = new JFrame("Choose");
 		
 		l1 = new JLabel("Enter User Name: ");
 		l2 = new JLabel("Enter Password: ");
@@ -29,6 +31,11 @@ public class BankAdminLogin extends WindowAdapter implements ActionListener{
 		t2 = new JTextField();
 		
 		b1 = new JButton("Login");
+		bs = new JButton("Savings");
+		bc = new JButton("Current");
+		
+		bs.setBounds(80, 30, 100, 30);
+		bc.setBounds(80, 70, 100, 30);
 		
 		t1.setBounds(150, 40, 150, 30);
 		t2.setBounds(150, 90, 150, 30);
@@ -47,6 +54,9 @@ public class BankAdminLogin extends WindowAdapter implements ActionListener{
 		f.add(l3);
 		f.add(l4);
 		
+		f1.add(bs);
+		f1.add(bc);
+		
 		l3.setVisible(false);
 		l4.setVisible(false);
 		
@@ -57,9 +67,17 @@ public class BankAdminLogin extends WindowAdapter implements ActionListener{
 		f.setBackground(Color.WHITE);
 		f.addWindowListener(this);
 		
+		f1.setLayout(null);
+		f1.setSize(450, 300);
+		f1.setVisible(false);
+		f1.setBackground(Color.WHITE);
+		f1.addWindowListener(this);
+		
 		t1.addActionListener(this);
 		t2.addActionListener(this);
 		b1.addActionListener(this);
+		bs.addActionListener(this);
+		bc.addActionListener(this);
 	}
 	public void windowClosing(WindowEvent e)
 	{
@@ -77,7 +95,7 @@ public class BankAdminLogin extends WindowAdapter implements ActionListener{
 		if(t1.getText().equalsIgnoreCase("admin") && t2.getText().equalsIgnoreCase("1234") && e.getSource()==b1)
 		{
 			f.setVisible(false);
-			new SavingsAccountLogin();
+			f1.setVisible(true);
 		}
 		else if(!t1.getText().equalsIgnoreCase("admin") && t2.getText().equalsIgnoreCase("1234") && e.getSource()==b1)
 		{
@@ -90,6 +108,10 @@ public class BankAdminLogin extends WindowAdapter implements ActionListener{
 			l4.setVisible(true);
 			l3.setVisible(false);
 		}
+		if(e.getSource()==bs)
+			new SavingsAccountLogin();
+		else if(e.getSource()==bc)
+			new CurrentAccountLogin();
 		
 	}
 
