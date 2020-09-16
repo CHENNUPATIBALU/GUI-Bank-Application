@@ -1,7 +1,6 @@
 package bankGUI;
 
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
@@ -10,14 +9,14 @@ import java.awt.event.WindowEvent;
 import javax.swing.*;
 
 
-public class BankAdminGUI extends WindowAdapter implements ActionListener{
+public class BankAdminLogin extends WindowAdapter implements ActionListener{
 	
 	JFrame f;
 	JLabel l1,l2,l3,l4;
 	JTextField t1,t2;
 	JButton b1;
 	
-	public BankAdminGUI()
+	public BankAdminLogin()
 	{
 		f = new JFrame("Bank Admin");
 		
@@ -69,18 +68,16 @@ public class BankAdminGUI extends WindowAdapter implements ActionListener{
 	
 
 	public static void main(String[] args) {
-		new BankAdminGUI();
-
+		new BankAdminLogin();
 	}
 
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		Font font = new Font("Serif",Font.ITALIC,13);
 		if(t1.getText().equalsIgnoreCase("admin") && t2.getText().equalsIgnoreCase("1234") && e.getSource()==b1)
 		{
-			//redirect to accounts section
-			
+			f.setVisible(false);
+			new SavingsAccountLogin();
 		}
 		else if(!t1.getText().equalsIgnoreCase("admin") && t2.getText().equalsIgnoreCase("1234") && e.getSource()==b1)
 		{
@@ -92,11 +89,6 @@ public class BankAdminGUI extends WindowAdapter implements ActionListener{
 		{
 			l4.setVisible(true);
 			l3.setVisible(false);
-		}
-		else if(t1.getText()==null && t2.getText()==null && e.getSource()==b1)
-		{
-			l1.setFont(font);
-			l2.setFont(font);
 		}
 		
 	}

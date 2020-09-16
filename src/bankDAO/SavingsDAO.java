@@ -1,5 +1,6 @@
 package bankDAO;
 import java.sql.*;
+import customerUI.*;
 import java.util.Random;
 
 public class SavingsDAO {
@@ -8,6 +9,8 @@ public class SavingsDAO {
 	Connection con;
 	Statement st;
 	Random rand = new Random();
+	SavingsAccount s = new SavingsAccount();
+	
 	public SavingsDAO() throws Exception
 	{
 		
@@ -22,7 +25,6 @@ public class SavingsDAO {
 		pst.setString(2, name);
 		pst.setFloat(3, amount);
 		pst.executeUpdate();
-		System.out.println("Account number: "+ano);
 	}
 	public void displaySavingsTb() throws Exception
 	{
@@ -43,7 +45,7 @@ public class SavingsDAO {
 	{
 		ResultSet rst = pst.executeQuery("select balance from savings where accno = "+ano);
 		while(rst.next())
-			System.out.println("Amount in your account is "+rst.getFloat(1));
+			s.setSavingsAmount(rst.getFloat(1));
 	}
 	public void savingsWithdraw(int ano,float money) throws Exception
 	{
@@ -51,10 +53,9 @@ public class SavingsDAO {
 		pst.setFloat(1, money);
 		pst.setInt(2, ano);
 		pst.executeUpdate();
-		System.out.println(money+" is debited from your account");
 		ResultSet rst = pst.executeQuery("select balance from savings where accno = "+ano);
 		while(rst.next())
-			System.out.println("Remaining Balance is "+rst.getFloat(1));
+			s.setSavingsAmount(rst.getFloat(1));
 	}
 	public void savingsDeposit(int ano,float money) throws Exception
 	{
@@ -62,18 +63,15 @@ public class SavingsDAO {
 		pst.setFloat(1, money);
 		pst.setInt(2, ano);
 		pst.executeUpdate();
-		System.out.println(money+" is credited from your account");
 		ResultSet rst = pst.executeQuery("select balance from savings where accno = "+ano);
 		while(rst.next())
-			System.out.println("Total Balance in your account is "+rst.getFloat(1));
+			s.setSavingsAmount(rst.getFloat(1));
 	}
 	public void displaySavingsAccount(int ano) throws Exception
 	{
 		ResultSet rst = pst.executeQuery("select * from savings where accno = "+ano);
 		while(rst.next())
-		{
-			System.out.println("Account Number: "+rst.getInt(1)+"\n"+"Account holder Name: "+rst.getString(2)+"\n"+"Amount: "+rst.getFloat(3));
-		}
+			s.setSavingsnameDetails(rst.getString(2), rst.getInt(1), rst.getFloat(3));
 	}
 	
 }

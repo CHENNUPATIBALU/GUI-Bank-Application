@@ -7,10 +7,13 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Random;
 
+import customerUI.CurrentAccount;
+
 public class CurrentDAO {
 	PreparedStatement pst;
 	Connection con;
 	Statement st;
+	CurrentAccount c = new CurrentAccount();
 	
 	Random rand = new Random();
 	
@@ -26,7 +29,6 @@ public class CurrentDAO {
 		pst.setString(2, name);
 		pst.setFloat(3, amount);
 		pst.executeUpdate();
-		System.out.println("Account number: "+ano);
 	}
 	public void displayCurrentTb() throws Exception
 	{
@@ -47,7 +49,7 @@ public class CurrentDAO {
 	{
 		ResultSet rst = pst.executeQuery("select balance from current where accno = "+ano);
 		while(rst.next())
-			System.out.println("Amount in your account is "+rst.getFloat(1));
+			c.setCurrentAmount(rst.getFloat(1));
 	}
 	public void currentWithdraw(int ano,float money) throws Exception
 	{
@@ -55,10 +57,9 @@ public class CurrentDAO {
 		pst.setFloat(1, money);
 		pst.setInt(2, ano);
 		pst.executeUpdate();
-		System.out.println(money+" is debited from your account");
 		ResultSet rst = pst.executeQuery("select balance from savings where accno = "+ano);
 		while(rst.next())
-			System.out.println("Remaining Balance is "+rst.getFloat(1));
+			c.setCurrentAmount(rst.getFloat(1));
 	}
 	public void currentDeposit(int ano,float money) throws Exception
 	{
@@ -66,18 +67,14 @@ public class CurrentDAO {
 		pst.setFloat(1, money);
 		pst.setInt(2, ano);
 		pst.executeUpdate();
-		System.out.println(money+" is credited to your account");
-		ResultSet rst = pst.executeQuery("select balance from current where accno = "+ano);
+		ResultSet rst = pst.executeQuery("select balance from savings where accno = "+ano);
 		while(rst.next())
-			System.out.println("Total Balance in your account is "+rst.getFloat(1));
+			c.setCurrentAmount(rst.getFloat(1));
 	}
 	public void displayCurrentAccount(int ano) throws Exception
 	{
 		ResultSet rst = pst.executeQuery("select * from current where accno = "+ano);
 		while(rst.next())
-		{
-			System.out.println("Account Number: "+rst.getInt(1)+"\n"+"Account holder Name: "+rst.getString(2)+"\n"+"Amount: "+rst.getFloat(3));
-		}
-		
+			c.setCurrentnameDetails(rst.getString(2), rst.getInt(1), rst.getFloat(3));
 	}
 }
