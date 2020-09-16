@@ -7,7 +7,8 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 import javax.swing.*;
-import customerUI.*;
+import customerUI.SavingsAccount;
+import customerUI.createAccount;
 
 public class SavingsAccountLogin extends WindowAdapter implements ActionListener{
 
@@ -72,7 +73,7 @@ public class SavingsAccountLogin extends WindowAdapter implements ActionListener
 	}
 	@Override
 	public void actionPerformed(ActionEvent e){
-		if(e.getSource()==bcreate)
+		if(!t1.getText().equalsIgnoreCase("balu") && !t2.getText().equalsIgnoreCase("abcd123") && e.getSource()==bcreate)
 		{
 			f.setVisible(false);
 			try

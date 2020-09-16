@@ -21,7 +21,7 @@ public class createAccount extends WindowAdapter implements ActionListener,ItemL
 	CurrentDAO cd;
 	int accno;
 	
-	Random rand = new Random();
+	static Random rand = new Random();
 	
 	public createAccount() throws Exception
 	{
@@ -73,14 +73,24 @@ public class createAccount extends WindowAdapter implements ActionListener,ItemL
 		f.setLayout(null);
 		f.addWindowListener(this);
 	}
+	
+	public void createSavingsAccount(int accno,String name,float amount) throws Exception
+	{
+		accno=rand.nextInt(999999999);
+		sd.insertSavingsTb(accno, name, amount);
+	}
+	public void createCurrentAccount(int accno,String name,float amount) throws Exception
+	{
+		accno=rand.nextInt(999999999);
+		cd.insertCurrentTb(accno, t1.getText(), Float.parseFloat(t2.getText()));
+	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==cb1 && e.getSource()==b1)
 		{
 			try
 			{
-				accno=rand.nextInt(999999999);
-				sd.insertSavingsTb(accno, t1.getText(), Float.parseFloat(t2.getText()));
+				new createAccount().createSavingsAccount(accno, t1.getText(), Float.parseFloat(t2.getText()));
 			}
 			catch(Exception ae) {}
 		}
@@ -88,8 +98,7 @@ public class createAccount extends WindowAdapter implements ActionListener,ItemL
 		{
 			try
 			{
-				accno=rand.nextInt(999999999);
-				cd.insertCurrentTb(accno, t1.getText(), Float.parseFloat(t2.getText()));
+				new createAccount().createCurrentAccount(accno, t1.getText(), Float.parseFloat(t2.getText()));
 			}
 			catch(Exception ae) {}
 		}

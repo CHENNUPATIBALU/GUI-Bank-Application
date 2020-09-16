@@ -20,8 +20,9 @@ public class CurrentAccountLogin extends WindowAdapter implements ActionListener
 	JTextField t1,t2;
 	JLabel l1,l2,l3,l4;
 	JButton b1,bcreate;
+	createAccount c;
 	
-	public CurrentAccountLogin()
+	public CurrentAccountLogin() throws Exception
 	{
 		f = new JFrame("CurrentAccount Login");
 		
@@ -29,6 +30,8 @@ public class CurrentAccountLogin extends WindowAdapter implements ActionListener
 		l2 = new JLabel("Enter Password: ");
 		l3 = new JLabel("Incorrect username");
 		l4 = new JLabel("Incorrect password");
+		
+		c = new createAccount();
 		
 		t1 = new JTextField();
 		t2 = new JTextField();
@@ -81,11 +84,7 @@ public class CurrentAccountLogin extends WindowAdapter implements ActionListener
 		if(e.getSource()==bcreate)
 		{
 			f.setVisible(false);
-			try
-			{
-				new createAccount();
-			}
-			catch(Exception ae) {}
+			
 		}
 		if(t1.getText().equalsIgnoreCase("balu") && t2.getText().equalsIgnoreCase("abcd123") && e.getSource()==b1)
 		{

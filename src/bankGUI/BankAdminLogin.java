@@ -116,7 +116,12 @@ public class BankAdminLogin extends WindowAdapter implements ActionListener{
 		else if(e.getSource()==bc)
 		{
 			f1.setVisible(false);
-			new CurrentAccountLogin();
+			try {
+				new CurrentAccountLogin();
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 
 	}

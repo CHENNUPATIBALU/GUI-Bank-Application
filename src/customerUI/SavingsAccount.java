@@ -53,7 +53,7 @@ public class SavingsAccount extends WindowAdapter implements ActionListener {
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
+		f
 		
 	}
 	public void setSavingsnameDetails(String name,long accno,float amount)
