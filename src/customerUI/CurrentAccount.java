@@ -28,21 +28,11 @@ public class CurrentAccount extends WindowAdapter implements ActionListener {
 		
 		lname.setBounds(10, 10, 200, 100);
 		
-		withdraw_button = new JButton("WithDraw");
-		deposit_button = new JButton("Deposit");
-		balance_enquiry_button = new JButton("Balance Enquiry");
-		
-		withdraw_button.setBounds(330, 10, 190,30);
-		deposit_button.setBounds(330, 50, 190,30);
-		balance_enquiry_button.setBounds(330, 90, 190,30);
-		
-		
 		f.add(t1);
 		f.add(lname);
 		f.add(withdraw_button);
 		f.add(balance_enquiry_button);
 		f.add(deposit_button);
-		
 		
 		f.setLayout(null);
 		f.setSize(550, 300);

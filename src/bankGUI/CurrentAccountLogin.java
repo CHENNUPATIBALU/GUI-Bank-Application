@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import customerUI.CurrentAccount;
+import customerUI.createAccount;
 
 public class CurrentAccountLogin extends WindowAdapter implements ActionListener {
 
@@ -22,7 +23,7 @@ public class CurrentAccountLogin extends WindowAdapter implements ActionListener
 	
 	public CurrentAccountLogin()
 	{
-		f = new JFrame("SavingsAccount Login");
+		f = new JFrame("CurrentAccount Login");
 		
 		l1 = new JLabel("Enter User Name: ");
 		l2 = new JLabel("Enter Password: ");
@@ -34,12 +35,12 @@ public class CurrentAccountLogin extends WindowAdapter implements ActionListener
 		
 		b1 = new JButton("Login");
 		bcreate = new JButton("SignUp");
-		
-		bcreate.setBounds(220, 130, 80, 20);
+
 		
 		t1.setBounds(150, 40, 150, 30);
 		t2.setBounds(150, 90, 150, 30);
-		b1.setBounds(190, 130, 80, 20);
+		b1.setBounds(130, 130, 80, 20);
+		bcreate.setBounds(220, 130, 80, 20);
 		
 		l1.setBounds(45, 40, 120, 20);
 		l2.setBounds(45, 90, 120, 20);
@@ -68,6 +69,7 @@ public class CurrentAccountLogin extends WindowAdapter implements ActionListener
 		t1.addActionListener(this);
 		t2.addActionListener(this);
 		b1.addActionListener(this);
+		bcreate.addActionListener(this);
 		
 	}
 	public void windowClosing(WindowEvent e)
@@ -76,9 +78,19 @@ public class CurrentAccountLogin extends WindowAdapter implements ActionListener
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		if(e.getSource()==bcreate)
+		{
+			f.setVisible(false);
+			try
+			{
+				new createAccount();
+			}
+			catch(Exception ae) {}
+		}
 		if(t1.getText().equalsIgnoreCase("balu") && t2.getText().equalsIgnoreCase("abcd123") && e.getSource()==b1)
 		{
 			new CurrentAccount();
+			f.setVisible(false);
 		}
 		else if(!t1.getText().equalsIgnoreCase("balu") && t2.getText().equalsIgnoreCase("abcd123") && e.getSource()==b1)
 		{
@@ -91,10 +103,9 @@ public class CurrentAccountLogin extends WindowAdapter implements ActionListener
 			l4.setVisible(true);
 			l3.setVisible(false);
 		}
-		if(e.getSource()==bcreate)
-		{
-			
-		}
+		else
+			l3.setText("Enter credentials");l3.setVisible(true);
+		
 		
 	}
 }

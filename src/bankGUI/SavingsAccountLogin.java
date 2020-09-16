@@ -63,6 +63,7 @@ public class SavingsAccountLogin extends WindowAdapter implements ActionListener
 		t1.addActionListener(this);
 		t2.addActionListener(this);
 		b1.addActionListener(this);
+		bcreate.addActionListener(this);
 		
 	}
 	public void windowClosing(WindowEvent e)
@@ -70,10 +71,20 @@ public class SavingsAccountLogin extends WindowAdapter implements ActionListener
 		System.exit(0);
 	}
 	@Override
-	public void actionPerformed(ActionEvent e) {
+	public void actionPerformed(ActionEvent e){
+		if(e.getSource()==bcreate)
+		{
+			f.setVisible(false);
+			try
+			{
+				new createAccount();
+			}
+			catch(Exception ae) {}
+		}
 		if(t1.getText().equalsIgnoreCase("balu") && t2.getText().equalsIgnoreCase("abcd123") && e.getSource()==b1)
 		{
 			new SavingsAccount();
+			f.setVisible(false);
 		}
 		else if(!t1.getText().equalsIgnoreCase("balu") && t2.getText().equalsIgnoreCase("abcd123") && e.getSource()==b1)
 		{
@@ -86,10 +97,8 @@ public class SavingsAccountLogin extends WindowAdapter implements ActionListener
 			l4.setVisible(true);
 			l3.setVisible(false);
 		}
-		if(e.getSource()==bcreate)
-		{
-			
-		}
+		else
+			l3.setText("Enter credentials");l3.setVisible(true);
 		
 	}
 	

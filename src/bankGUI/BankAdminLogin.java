@@ -109,10 +109,16 @@ public class BankAdminLogin extends WindowAdapter implements ActionListener{
 			l3.setVisible(false);
 		}
 		if(e.getSource()==bs)
+		{
+			f1.setVisible(false);
 			new SavingsAccountLogin();
+		}		
 		else if(e.getSource()==bc)
+		{
+			f1.setVisible(false);
 			new CurrentAccountLogin();
-		
+		}
+
 	}
 
 }
