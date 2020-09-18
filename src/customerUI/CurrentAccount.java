@@ -1,6 +1,5 @@
 package customerUI;
 
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
@@ -28,6 +27,9 @@ public class CurrentAccount extends WindowAdapter implements ActionListener {
 		
 		lname.setBounds(10, 10, 200, 100);
 		
+		t1.addActionListener(this);
+		
+		
 		f.add(t1);
 		f.add(lname);
 		f.add(withdraw_button);
@@ -37,7 +39,6 @@ public class CurrentAccount extends WindowAdapter implements ActionListener {
 		f.setLayout(null);
 		f.setSize(550, 300);
 		f.setVisible(true);
-		f.setBackground(Color.WHITE);
 		f.addWindowListener(this);
 	}
 	public void windowClosing(WindowEvent e)
