@@ -89,15 +89,12 @@ public class CurrentAccountLogin extends WindowAdapter implements ActionListener
 		if(t1.getText().equals("") && t2.getText().equals("") && e.getSource()==bcreate)
 		{
 			f.setVisible(false);
-<<<<<<< Updated upstream
-=======
 			try {
 				new createAccount();
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
->>>>>>> Stashed changes
 		}
 		if(t1.getText().equalsIgnoreCase("balu") && t2.getText().equalsIgnoreCase("abcd123") && e.getSource()==b1)
 		{
