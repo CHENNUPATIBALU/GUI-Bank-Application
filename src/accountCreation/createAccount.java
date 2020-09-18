@@ -19,13 +19,17 @@ public class createAccount extends WindowAdapter implements ActionListener{
 	JButton b1;
 	JCheckBox cb1,cb2;
 	JLabel l1,l2,l3;
+<<<<<<< Updated upstream
 <<<<<<< HEAD
+=======
+>>>>>>> Stashed changes
 	int accno;
 	
 	static Random rand = new Random();
 	
 	
 	public createAccount()
+<<<<<<< Updated upstream
 =======
 	SavingsDAO sd;
 	CurrentDAO cd;
@@ -37,6 +41,8 @@ public class createAccount extends WindowAdapter implements ActionListener{
 	
 	public createAccount() throws Exception
 >>>>>>> edfb8e7e0c8b61b60852ec0486be8ad1a84bdb91
+=======
+>>>>>>> Stashed changes
 	{
 		f = new JFrame("Account Creation");
 		t1 = new JTextField();
@@ -47,17 +53,23 @@ public class createAccount extends WindowAdapter implements ActionListener{
 		
 		b1 = new JButton("Create");
 		
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 =======
 		sd = new SavingsDAO();
 		cd = new CurrentDAO();
 >>>>>>> edfb8e7e0c8b61b60852ec0486be8ad1a84bdb91
+=======
+>>>>>>> Stashed changes
 		
 		l1 = new JLabel("Enter your Name: ");
 		l2 = new JLabel("Your Account Number: ");
 		l3 = new JLabel("Enter the amount for initial deposit: ");
 		
+<<<<<<< Updated upstream
 <<<<<<< HEAD
+=======
+>>>>>>> Stashed changes
 		l1.setBounds(10, 20, 150, 30);
 		l2.setBounds(10, 50, 200, 30);
 		l3.setBounds(10, 80, 300, 30);
@@ -69,6 +81,7 @@ public class createAccount extends WindowAdapter implements ActionListener{
 		
 		cb1.setBounds(210, 120, 100, 30);
 		cb2.setBounds(240, 150, 100, 30);
+<<<<<<< Updated upstream
 =======
 		l1.setBounds(10, 20, 80, 30);
 		l2.setBounds(10, 50, 80, 30);
@@ -81,6 +94,8 @@ public class createAccount extends WindowAdapter implements ActionListener{
 		cb1.setBounds(210, 70, 100, 30);
 		cb2.setBounds(270, 70, 100, 30);
 >>>>>>> edfb8e7e0c8b61b60852ec0486be8ad1a84bdb91
+=======
+>>>>>>> Stashed changes
 		
 		
 		f.add(l1);
@@ -98,11 +113,15 @@ public class createAccount extends WindowAdapter implements ActionListener{
 		cb1.addActionListener(this);
 		cb2.addActionListener(this);
 		
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 		f.setSize(700,300);
 =======
 		f.setSize(400,300);
 >>>>>>> edfb8e7e0c8b61b60852ec0486be8ad1a84bdb91
+=======
+		f.setSize(700,300);
+>>>>>>> Stashed changes
 		f.setVisible(true);
 		f.setLayout(null);
 		f.addWindowListener(this);
@@ -110,12 +129,18 @@ public class createAccount extends WindowAdapter implements ActionListener{
 	
 	public void createSavingsAccount(int accno,String name,float amount) throws Exception
 	{
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 		SavingsDAO sd;
 		SavingsAccount sa;
 		sd = new SavingsDAO();
 =======
 >>>>>>> edfb8e7e0c8b61b60852ec0486be8ad1a84bdb91
+=======
+		SavingsDAO sd;
+		SavingsAccount sa;
+		sd = new SavingsDAO();
+>>>>>>> Stashed changes
 		sa = new SavingsAccount();
 		accno=rand.nextInt(999999999);
 		sd.insertSavingsTb(accno, name, amount);
@@ -124,12 +149,18 @@ public class createAccount extends WindowAdapter implements ActionListener{
 	}
 	public void createCurrentAccount(int accno,String name,float amount) throws Exception
 	{
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 		CurrentDAO cd;
 		CurrentAccount ca;
 		cd = new CurrentDAO();
 =======
 >>>>>>> edfb8e7e0c8b61b60852ec0486be8ad1a84bdb91
+=======
+		CurrentDAO cd;
+		CurrentAccount ca;
+		cd = new CurrentDAO();
+>>>>>>> Stashed changes
 		ca = new CurrentAccount();
 		accno=rand.nextInt(999999999);
 		cd.insertCurrentTb(accno, t1.getText(), Float.parseFloat(t2.getText()));
@@ -142,11 +173,15 @@ public class createAccount extends WindowAdapter implements ActionListener{
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 		if(e.getSource()==cb1 && e.getSource()==b1)
 =======
 		/*if(e.getActionCommand()==cb1.getName() && e.getSource()==b1)
 >>>>>>> edfb8e7e0c8b61b60852ec0486be8ad1a84bdb91
+=======
+		if(e.getSource()==cb1 && e.getSource()==b1)
+>>>>>>> Stashed changes
 		{
 			try
 			{
@@ -154,21 +189,29 @@ public class createAccount extends WindowAdapter implements ActionListener{
 			}
 			catch(Exception ae) {}
 		}
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 		else if(e.getSource()==cb2 && e.getSource()==b1)
 =======
 		else if(e.getSource()==cb2&& e.getSource()==b1)
 >>>>>>> edfb8e7e0c8b61b60852ec0486be8ad1a84bdb91
+=======
+		else if(e.getSource()==cb2 && e.getSource()==b1)
+>>>>>>> Stashed changes
 		{
 			try
 			{
 				new createAccount().createCurrentAccount(accno, t1.getText(), Float.parseFloat(t2.getText()));
 			}
 			catch(Exception ae) {}
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 		}
 =======
 		}*/
 >>>>>>> edfb8e7e0c8b61b60852ec0486be8ad1a84bdb91
+=======
+		}
+>>>>>>> Stashed changes
 	}
 }
