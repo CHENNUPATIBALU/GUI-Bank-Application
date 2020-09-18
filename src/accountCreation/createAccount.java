@@ -2,8 +2,6 @@ package accountCreation;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.Random;
@@ -14,7 +12,7 @@ import customerUI.CurrentAccount;
 import customerUI.SavingsAccount;
 import bankDAO.CurrentDAO;
 
-public class createAccount extends WindowAdapter implements ActionListener,ItemListener{
+public class createAccount extends WindowAdapter implements ActionListener{
 
 	JFrame f;
 	JTextField t1,t2;
@@ -22,7 +20,6 @@ public class createAccount extends WindowAdapter implements ActionListener,ItemL
 	JCheckBox cb1,cb2;
 	JLabel l1,l2,l3;
 	int accno;
-	int choice;
 	
 	static Random rand = new Random();
 	
@@ -68,8 +65,8 @@ public class createAccount extends WindowAdapter implements ActionListener,ItemL
 		t1.addActionListener(this);
 		t2.addActionListener(this);
 		b1.addActionListener(this);
-		cb1.addItemListener(this);
-		cb2.addItemListener(this);
+		cb1.addActionListener(this);
+		cb2.addActionListener(this);
 		
 		f.setSize(700,300);
 		f.setVisible(true);
@@ -77,29 +74,25 @@ public class createAccount extends WindowAdapter implements ActionListener,ItemL
 		f.addWindowListener(this);
 	}
 	
-	public void createSavingsAccount() throws Exception
+	public void createSavingsAccount(int accno,String name,float amount) throws Exception
 	{
 		SavingsDAO sd;
 		SavingsAccount sa;
 		sd = new SavingsDAO();
 		sa = new SavingsAccount();
 		accno=rand.nextInt(999999999);
-		accno=rand.nextInt(999999999);
-		String name = t1.getText();
-		float amount = Float.parseFloat(t2.getText());
 		sd.insertSavingsTb(accno, name, amount);
 		sa.setSavingsnameDetails(name, accno, amount);
+		
 	}
-	public void createCurrentAccount() throws Exception
+	public void createCurrentAccount(int accno,String name,float amount) throws Exception
 	{
 		CurrentDAO cd;
 		CurrentAccount ca;
 		cd = new CurrentDAO();
 		ca = new CurrentAccount();
 		accno=rand.nextInt(999999999);
-		String name = t1.getText();
-		float amount = Float.parseFloat(t2.getText());
-		cd.insertCurrentTb(accno, name, amount);
+		cd.insertCurrentTb(accno, t1.getText(), Float.parseFloat(t2.getText()));
 		ca.setCurrentnameDetails(name, accno, amount);
 	}
 	
@@ -109,37 +102,21 @@ public class createAccount extends WindowAdapter implements ActionListener,ItemL
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource()==b1)
+		if(e.getSource()==cb1 && e.getSource()==b1)
 		{
-			choice = 1;
+			try
+			{
+				new createAccount().createSavingsAccount(accno, t1.getText(), Float.parseFloat(t2.getText()));
+			}
+			catch(Exception ae) {}
 		}
 		else if(e.getSource()==cb2 && e.getSource()==b1)
 		{
-			choice = 2;
+			try
+			{
+				new createAccount().createCurrentAccount(accno, t1.getText(), Float.parseFloat(t2.getText()));
+			}
+			catch(Exception ae) {}
 		}
 	}
-
-	@Override
-	public void itemStateChanged(ItemEvent e) {
-		if(e.getStateChange()==1 && e.getItem()==cb1 && choice==1)
-		{
-			try {
-				new createAccount().createSavingsAccount();
-			} catch (Exception e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-		}
-		else if (e.getStateChange()==1 && e.getItem()==cb2)
-		{
-			try {
-				new createAccount().createCurrentAccount();
-			} catch (Exception e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-		}
-		
-	}
-	
 }
