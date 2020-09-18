@@ -11,8 +11,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import accountCreation.createAccount;
 import customerUI.CurrentAccount;
-import customerUI.createAccount;
 
 public class CurrentAccountLogin extends WindowAdapter implements ActionListener {
 
@@ -22,7 +22,7 @@ public class CurrentAccountLogin extends WindowAdapter implements ActionListener
 	JButton b1,bcreate;
 	createAccount c;
 	
-	public CurrentAccountLogin() throws Exception
+	public CurrentAccountLogin()
 	{
 		f = new JFrame("CurrentAccount Login");
 		
@@ -31,7 +31,12 @@ public class CurrentAccountLogin extends WindowAdapter implements ActionListener
 		l3 = new JLabel("Incorrect username");
 		l4 = new JLabel("Incorrect password");
 		
-		c = new createAccount();
+		try {
+			c = new createAccount();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		t1 = new JTextField();
 		t2 = new JTextField();
@@ -81,10 +86,15 @@ public class CurrentAccountLogin extends WindowAdapter implements ActionListener
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource()==bcreate)
+		if(t1.getText().equals("") && t2.getText().equals("") && e.getSource()==bcreate)
 		{
 			f.setVisible(false);
-			
+			try {
+				new createAccount();
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 		if(t1.getText().equalsIgnoreCase("balu") && t2.getText().equalsIgnoreCase("abcd123") && e.getSource()==b1)
 		{

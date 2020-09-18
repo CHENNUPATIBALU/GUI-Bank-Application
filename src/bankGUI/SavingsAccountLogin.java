@@ -7,8 +7,9 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 import javax.swing.*;
+
+import accountCreation.createAccount;
 import customerUI.SavingsAccount;
-import customerUI.createAccount;
 
 public class SavingsAccountLogin extends WindowAdapter implements ActionListener{
 
@@ -73,14 +74,15 @@ public class SavingsAccountLogin extends WindowAdapter implements ActionListener
 	}
 	@Override
 	public void actionPerformed(ActionEvent e){
-		if(!t1.getText().equalsIgnoreCase("balu") && !t2.getText().equalsIgnoreCase("abcd123") && e.getSource()==bcreate)
+		if(t1.getText().equals("") && t2.getText().equals("") && e.getSource()==bcreate)
 		{
 			f.setVisible(false);
-			try
-			{
-				new createAccount();
-			}
-			catch(Exception ae) {}
+				try {
+					new createAccount();
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 		}
 		if(t1.getText().equalsIgnoreCase("balu") && t2.getText().equalsIgnoreCase("abcd123") && e.getSource()==b1)
 		{
