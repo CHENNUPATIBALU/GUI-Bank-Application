@@ -19,12 +19,24 @@ public class createAccount extends WindowAdapter implements ActionListener{
 	JButton b1;
 	JCheckBox cb1,cb2;
 	JLabel l1,l2,l3;
+<<<<<<< HEAD
 	int accno;
 	
 	static Random rand = new Random();
 	
 	
 	public createAccount()
+=======
+	SavingsDAO sd;
+	CurrentDAO cd;
+	int accno;
+	
+	static Random rand = new Random();
+	SavingsAccount sa;
+	CurrentAccount ca;
+	
+	public createAccount() throws Exception
+>>>>>>> edfb8e7e0c8b61b60852ec0486be8ad1a84bdb91
 	{
 		f = new JFrame("Account Creation");
 		t1 = new JTextField();
@@ -35,11 +47,17 @@ public class createAccount extends WindowAdapter implements ActionListener{
 		
 		b1 = new JButton("Create");
 		
+<<<<<<< HEAD
+=======
+		sd = new SavingsDAO();
+		cd = new CurrentDAO();
+>>>>>>> edfb8e7e0c8b61b60852ec0486be8ad1a84bdb91
 		
 		l1 = new JLabel("Enter your Name: ");
 		l2 = new JLabel("Your Account Number: ");
 		l3 = new JLabel("Enter the amount for initial deposit: ");
 		
+<<<<<<< HEAD
 		l1.setBounds(10, 20, 150, 30);
 		l2.setBounds(10, 50, 200, 30);
 		l3.setBounds(10, 80, 300, 30);
@@ -51,6 +69,18 @@ public class createAccount extends WindowAdapter implements ActionListener{
 		
 		cb1.setBounds(210, 120, 100, 30);
 		cb2.setBounds(240, 150, 100, 30);
+=======
+		l1.setBounds(10, 20, 80, 30);
+		l2.setBounds(10, 50, 80, 30);
+		
+		t1.setBounds(200, 20, 50, 30);
+		t2.setBounds(200, 50, 50, 30);
+		
+		b1.setBounds(210, 80, 80, 30);
+		
+		cb1.setBounds(210, 70, 100, 30);
+		cb2.setBounds(270, 70, 100, 30);
+>>>>>>> edfb8e7e0c8b61b60852ec0486be8ad1a84bdb91
 		
 		
 		f.add(l1);
@@ -68,7 +98,11 @@ public class createAccount extends WindowAdapter implements ActionListener{
 		cb1.addActionListener(this);
 		cb2.addActionListener(this);
 		
+<<<<<<< HEAD
 		f.setSize(700,300);
+=======
+		f.setSize(400,300);
+>>>>>>> edfb8e7e0c8b61b60852ec0486be8ad1a84bdb91
 		f.setVisible(true);
 		f.setLayout(null);
 		f.addWindowListener(this);
@@ -76,9 +110,12 @@ public class createAccount extends WindowAdapter implements ActionListener{
 	
 	public void createSavingsAccount(int accno,String name,float amount) throws Exception
 	{
+<<<<<<< HEAD
 		SavingsDAO sd;
 		SavingsAccount sa;
 		sd = new SavingsDAO();
+=======
+>>>>>>> edfb8e7e0c8b61b60852ec0486be8ad1a84bdb91
 		sa = new SavingsAccount();
 		accno=rand.nextInt(999999999);
 		sd.insertSavingsTb(accno, name, amount);
@@ -87,9 +124,12 @@ public class createAccount extends WindowAdapter implements ActionListener{
 	}
 	public void createCurrentAccount(int accno,String name,float amount) throws Exception
 	{
+<<<<<<< HEAD
 		CurrentDAO cd;
 		CurrentAccount ca;
 		cd = new CurrentDAO();
+=======
+>>>>>>> edfb8e7e0c8b61b60852ec0486be8ad1a84bdb91
 		ca = new CurrentAccount();
 		accno=rand.nextInt(999999999);
 		cd.insertCurrentTb(accno, t1.getText(), Float.parseFloat(t2.getText()));
@@ -102,7 +142,11 @@ public class createAccount extends WindowAdapter implements ActionListener{
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
+<<<<<<< HEAD
 		if(e.getSource()==cb1 && e.getSource()==b1)
+=======
+		/*if(e.getActionCommand()==cb1.getName() && e.getSource()==b1)
+>>>>>>> edfb8e7e0c8b61b60852ec0486be8ad1a84bdb91
 		{
 			try
 			{
@@ -110,13 +154,21 @@ public class createAccount extends WindowAdapter implements ActionListener{
 			}
 			catch(Exception ae) {}
 		}
+<<<<<<< HEAD
 		else if(e.getSource()==cb2 && e.getSource()==b1)
+=======
+		else if(e.getSource()==cb2&& e.getSource()==b1)
+>>>>>>> edfb8e7e0c8b61b60852ec0486be8ad1a84bdb91
 		{
 			try
 			{
 				new createAccount().createCurrentAccount(accno, t1.getText(), Float.parseFloat(t2.getText()));
 			}
 			catch(Exception ae) {}
+<<<<<<< HEAD
 		}
+=======
+		}*/
+>>>>>>> edfb8e7e0c8b61b60852ec0486be8ad1a84bdb91
 	}
 }
