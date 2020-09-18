@@ -7,8 +7,9 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 import javax.swing.*;
+
+import accountCreation.createAccount;
 import customerUI.SavingsAccount;
-import customerUI.createAccount;
 
 public class SavingsAccountLogin extends WindowAdapter implements ActionListener{
 

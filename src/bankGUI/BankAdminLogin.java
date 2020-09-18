@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+import bankDAO.*;
+
 import javax.swing.*;
 
 
@@ -85,17 +87,26 @@ public class BankAdminLogin extends WindowAdapter implements ActionListener{
 	}
 	
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception{
 		new BankAdminLogin();
 	}
 
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		
 		if(t1.getText().equalsIgnoreCase("admin") && t2.getText().equalsIgnoreCase("1234") && e.getSource()==b1)
 		{
 			f.setVisible(false);
 			f1.setVisible(true);
+			try {
+				BankDataBase b = new BankDataBase();
+				b.createDB();
+				b.createBankTB();
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 		else if(!t1.getText().equalsIgnoreCase("admin") && t2.getText().equalsIgnoreCase("1234") && e.getSource()==b1)
 		{
@@ -108,6 +119,11 @@ public class BankAdminLogin extends WindowAdapter implements ActionListener{
 			l4.setVisible(true);
 			l3.setVisible(false);
 		}
+		else
+		{
+			l3.setVisible(true);
+			l3.setText("Enter Credentials");
+		}
 		if(e.getSource()==bs)
 		{
 			f1.setVisible(false);
@@ -116,12 +132,7 @@ public class BankAdminLogin extends WindowAdapter implements ActionListener{
 		else if(e.getSource()==bc)
 		{
 			f1.setVisible(false);
-			try {
-				new CurrentAccountLogin();
-			} catch (Exception e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
+			new CurrentAccountLogin();
 		}
 
 	}

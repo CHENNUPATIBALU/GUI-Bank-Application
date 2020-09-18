@@ -1,6 +1,5 @@
 package customerUI;
 
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
@@ -44,7 +43,6 @@ public class SavingsAccount extends WindowAdapter implements ActionListener {
 		f.setLayout(null);
 		f.setSize(550, 300);
 		f.setVisible(true);
-		f.setBackground(Color.WHITE);
 		f.addWindowListener(this);
 	}
 	public void windowClosing(WindowEvent e)
@@ -53,7 +51,7 @@ public class SavingsAccount extends WindowAdapter implements ActionListener {
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		f
+		
 		
 	}
 	public void setSavingsnameDetails(String name,long accno,float amount)
