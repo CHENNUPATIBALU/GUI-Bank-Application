@@ -104,10 +104,6 @@ public class BankAdminLogin extends WindowAdapter implements ActionListener{
 				b.createDB();
 				b.createBankTB();
 			} catch (Exception e1) {
-<<<<<<< Updated upstream
-				// TODO Auto-generated catch block
-=======
->>>>>>> Stashed changes
 				e1.printStackTrace();
 			}
 		}
