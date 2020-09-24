@@ -11,6 +11,7 @@ import bankDAO.*;
 import javax.swing.*;
 
 
+
 public class BankAdminLogin extends WindowAdapter implements ActionListener{
 	
 	JFrame f,f1;
@@ -127,6 +128,7 @@ public class BankAdminLogin extends WindowAdapter implements ActionListener{
 		{
 			f1.setVisible(false);
 			new SavingsAccountLogin();
+			f1.setVisible(true);
 		}		
 		else if(e.getSource()==bc)
 		{

@@ -23,6 +23,7 @@ public class createAccount extends WindowAdapter implements ActionListener,ItemL
 	JLabel l1,l2,l3,l4;
 	int accno;
 	int choice;
+	CurrentDAO cd;
 	
 	static Random rand = new Random();
 	
@@ -82,24 +83,26 @@ public class createAccount extends WindowAdapter implements ActionListener,ItemL
 		f.addWindowListener(this);
 	}
 	
-	public void createSavingsAccount(int accno,String name,float amount) throws Exception
+	public void createSavingsAccount(int acno,String name,float amount) throws Exception
 	{
 		SavingsDAO sd;
 		SavingsAccount sa;
 		sd = new SavingsDAO();
 		sa = new SavingsAccount();
+		acno = this.accno;
 		sd.insertSavingsTb(accno, name, amount);
-		sa.setSavingsnameDetails(name, accno, amount);
+		//sa.setSavingsnameDetails(name, accno, amount);
 		System.out.println("Savings Account Created Successfully");
 	}
-	public void createCurrentAccount(int accno,String name,float amount) throws Exception
+	public void createCurrentAccount(int acno,String name,float amount) throws Exception
 	{
 		CurrentDAO cd;
 		CurrentAccount ca;
 		cd = new CurrentDAO();
 		ca = new CurrentAccount();
-		cd.insertCurrentTb(accno, t1.getText(), Float.parseFloat(t2.getText()));
-		ca.setCurrentnameDetails(name, accno, amount);
+		acno = this.accno;
+		cd.insertCurrentTb(accno, name, amount);
+		//ca.setCurrentnameDetails(name, accno, amount);
 		System.out.println("Current Account Created Successfully");
 	}
 	
@@ -108,18 +111,18 @@ public class createAccount extends WindowAdapter implements ActionListener,ItemL
 		System.exit(0);
 	}
 	@Override
-	public void itemStateChanged(ItemEvent e) {
-		if(e.getStateChange()==1 && e.getSource()==cb1)
+	public void itemStateChanged(ItemEvent ie) {
+		if(ie.getStateChange()==1 && ie.getSource()==cb1)
 		{
 			l4.setText(""+accno);
 			choice = 1;
 		}
-		if(e.getStateChange()==1 && e.getSource()==cb2)
+		if(ie.getStateChange()==1 && ie.getSource()==cb2)
 		{
 			l4.setText(""+accno);
 			choice = 2;
 		}
-		if(e.getStateChange()==1 && e.getSource()==cb1 && e.getSource()==cb2)
+		if(ie.getStateChange()==1 && ie.getSource()==cb1 && ie.getSource()==cb2)
 		{
 			f.setTitle("* Select any one CheckBox");
 		}
