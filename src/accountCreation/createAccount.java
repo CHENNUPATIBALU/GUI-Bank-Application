@@ -20,7 +20,7 @@ public class createAccount extends WindowAdapter implements ActionListener,ItemL
 	JTextField t1,t2;
 	JButton b1;
 	JCheckBox cb1,cb2;
-	JLabel l1,l2,l3;
+	JLabel l1,l2,l3,l4;
 	int accno;
 	int choice;
 	
@@ -33,6 +33,8 @@ public class createAccount extends WindowAdapter implements ActionListener,ItemL
 		t1 = new JTextField();
 		t2 = new JTextField();
 		
+		accno=rand.nextInt(999999999);
+		
 		cb1 = new JCheckBox("Savings");
 		cb2 = new JCheckBox("Current");
 		
@@ -42,9 +44,11 @@ public class createAccount extends WindowAdapter implements ActionListener,ItemL
 		l1 = new JLabel("Enter your Name: ");
 		l2 = new JLabel("Your Account Number: ");
 		l3 = new JLabel("Enter the amount for initial deposit: ");
+		l4 = new JLabel();
 		
 		l1.setBounds(10, 20, 150, 30);
 		l2.setBounds(10, 50, 200, 30);
+		l4.setBounds(250, 50, 200, 30);
 		l3.setBounds(10, 80, 300, 30);
 		
 		t1.setBounds(210, 20, 150, 30);
@@ -59,6 +63,7 @@ public class createAccount extends WindowAdapter implements ActionListener,ItemL
 		f.add(l1);
 		f.add(b1);
 		f.add(l2);
+		f.add(l4);
 		f.add(l3);
 		f.add(t1);
 		f.add(t2);
@@ -83,10 +88,8 @@ public class createAccount extends WindowAdapter implements ActionListener,ItemL
 		SavingsAccount sa;
 		sd = new SavingsDAO();
 		sa = new SavingsAccount();
-		accno=rand.nextInt(999999999);
-		l2.setText(l2.getText()+accno);
 		sd.insertSavingsTb(accno, name, amount);
-		//sa.setSavingsnameDetails(name, accno, amount);
+		sa.setSavingsnameDetails(name, accno, amount);
 		System.out.println("Savings Account Created Successfully");
 	}
 	public void createCurrentAccount(int accno,String name,float amount) throws Exception
@@ -95,8 +98,6 @@ public class createAccount extends WindowAdapter implements ActionListener,ItemL
 		CurrentAccount ca;
 		cd = new CurrentDAO();
 		ca = new CurrentAccount();
-		accno=rand.nextInt(999999999);
-		l2.setText(l2.getText()+accno);
 		cd.insertCurrentTb(accno, t1.getText(), Float.parseFloat(t2.getText()));
 		ca.setCurrentnameDetails(name, accno, amount);
 		System.out.println("Current Account Created Successfully");
@@ -110,10 +111,12 @@ public class createAccount extends WindowAdapter implements ActionListener,ItemL
 	public void itemStateChanged(ItemEvent e) {
 		if(e.getStateChange()==1 && e.getSource()==cb1)
 		{
+			l4.setText(""+accno);
 			choice = 1;
 		}
 		if(e.getStateChange()==1 && e.getSource()==cb2)
 		{
+			l4.setText(""+accno);
 			choice = 2;
 		}
 		if(e.getStateChange()==1 && e.getSource()==cb1 && e.getSource()==cb2)
