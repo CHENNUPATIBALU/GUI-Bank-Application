@@ -91,7 +91,7 @@ public class createAccount extends WindowAdapter implements ActionListener,ItemL
 		sa = new SavingsAccount();
 		acno = this.accno;
 		sd.insertSavingsTb(accno, name, amount);
-		//sa.setSavingsnameDetails(name, accno, amount);
+		sa.setSavingsnameDetails(name, accno, amount);
 		System.out.println("Savings Account Created Successfully");
 	}
 	public void createCurrentAccount(int acno,String name,float amount) throws Exception
@@ -102,7 +102,7 @@ public class createAccount extends WindowAdapter implements ActionListener,ItemL
 		ca = new CurrentAccount();
 		acno = this.accno;
 		cd.insertCurrentTb(accno, name, amount);
-		//ca.setCurrentnameDetails(name, accno, amount);
+		ca.setCurrentnameDetails(name, accno, amount);
 		System.out.println("Current Account Created Successfully");
 	}
 	
