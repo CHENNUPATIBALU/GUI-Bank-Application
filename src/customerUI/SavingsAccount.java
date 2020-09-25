@@ -6,6 +6,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 import javax.swing.*;
+import bankGUI.AccountSelection;
 
 public class SavingsAccount extends WindowAdapter implements ActionListener {
 
@@ -16,6 +17,7 @@ public class SavingsAccount extends WindowAdapter implements ActionListener {
 	long saccno;
 	String sname;
 	float sbalance;
+	AccountSelection a;
 	
 	
 	
@@ -60,7 +62,9 @@ public class SavingsAccount extends WindowAdapter implements ActionListener {
 	}
 	public void windowClosing(WindowEvent e)
 	{
-		System.exit(0);
+		a = new AccountSelection();
+		f.setVisible(false);
+		a.FrameVisible(true);	
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {

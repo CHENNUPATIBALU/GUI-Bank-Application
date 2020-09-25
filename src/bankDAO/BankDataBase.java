@@ -52,7 +52,7 @@ public class BankDataBase {
 		boolean b = st.execute("select exists(select * from information_schema.tables where table_schema = 'bank' and table_name = 'bank')");
 		if(b)
 		{
-			System.out.println("Savings and Current accounts tables exists in Bank DataBase");
+			System.out.println("Savings and Current accounts tables already exists in Bank DataBase");
 		}
 		else
 		{

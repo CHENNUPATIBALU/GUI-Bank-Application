@@ -13,6 +13,7 @@ import bankDAO.SavingsDAO;
 import customerUI.CurrentAccount;
 import customerUI.SavingsAccount;
 import bankDAO.CurrentDAO;
+import bankGUI.AccountSelection;
 
 public class createAccount extends WindowAdapter implements ActionListener,ItemListener{
 
@@ -24,6 +25,7 @@ public class createAccount extends WindowAdapter implements ActionListener,ItemL
 	int accno;
 	int choice;
 	CurrentDAO cd;
+	AccountSelection a;
 	
 	static Random rand = new Random();
 	
@@ -109,7 +111,9 @@ public class createAccount extends WindowAdapter implements ActionListener,ItemL
 	
 	public void windowClosing(WindowEvent e)
 	{
-		System.exit(0);
+		a = new AccountSelection();
+		f.setVisible(false);
+		a.FrameVisible(true);
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {

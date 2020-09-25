@@ -30,13 +30,6 @@ public class CurrentAccountLogin extends WindowAdapter implements ActionListener
 		l2 = new JLabel("Enter Password: ");
 		l3 = new JLabel();
 		
-		try {
-			c = new createAccount();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
 		t1 = new JTextField();
 		t2 = new JTextField();
 		
@@ -82,35 +75,47 @@ public class CurrentAccountLogin extends WindowAdapter implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		CustomerInfo ci;
-		
 		try {
-			if(t1.getText().equals("") && t2.getText().equals("") && e.getSource()==bcreate)
-			{
-				f.setVisible(false);
-				try {
-					new createAccount();
-				} catch (Exception e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+				if(t1.getText().equals("") && t2.getText().equals("") && e.getSource()==bcreate)
+				{
+					f.setVisible(false);
+					try {
+						new createAccount();
+					} catch (Exception e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				}
-			}
-			ci = new CustomerInfo();
-			float amount = 0;
-			if(ci.checkCurrentInfo(Long.parseLong(t2.getText()), t1.getText()) && e.getSource()==b1)
-			{
-				new CurrentAccount(Long.parseLong(t2.getText()), t1.getText(),amount);
-				f.setVisible(false);
-			}
-			else
-				l3.setText("Enter Valid Credentials");
-		} catch (NumberFormatException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (Exception e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}l3.setVisible(true);
+				ci = new CustomerInfo();
+				float amount = 0;
+				if(ci.checkCurrentInfo(Long.parseLong(t2.getText()), t1.getText()) && e.getSource()==b1)
+				{
+					new CurrentAccount(Long.parseLong(t2.getText()), t1.getText(),amount);
+					f.setVisible(false);
+				}
+				else if(ci.checkCurrentInfo(Long.parseLong(t2.getText()), ""))
+				{
+					l3.setText("Incorrect username");
+				}
+				else if(ci.checkCurrentInfo(Long.parseLong(""), t1.getText()))
+				{
+					l3.setText("Incorrect password");
+				}
+				else if(ci.checkCurrentInfo(Long.parseLong(""), ""))
+				{
+					l3.setText("Enter Credentials");
+				}
+					
+			} catch (NumberFormatException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}l3.setVisible(true);
+		}
+		
 		
 		
 	}
-}
+

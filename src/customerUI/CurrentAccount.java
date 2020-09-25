@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import bankGUI.AccountSelection;
 
 public class CurrentAccount extends WindowAdapter implements ActionListener {
 
@@ -19,9 +20,9 @@ public class CurrentAccount extends WindowAdapter implements ActionListener {
 	long caccno;
 	String cname;
 	float cbalance;
+	AccountSelection a;
 	
-	
-	
+
 	public CurrentAccount(long cacno,String cname,float cbalance)
 	{
 		this.caccno = cacno;
@@ -64,11 +65,12 @@ public class CurrentAccount extends WindowAdapter implements ActionListener {
 	}
 	public void windowClosing(WindowEvent e)
 	{
-		System.exit(0);
+		a = new AccountSelection();
+		f.setVisible(false);
+		a.FrameVisible(true);
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
 		
 	}
 	public void setCurrentnameDetails(String name,long accno,float amount)

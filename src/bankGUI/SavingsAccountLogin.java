@@ -75,29 +75,38 @@ public class SavingsAccountLogin extends WindowAdapter implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent e){
 		CustomerInfo c;
-		if(t1.getText().equals("") && t2.getText().equals("") && e.getSource()==bcreate)
-		{
-			f.setVisible(false);
-				try {
-					new createAccount();
-				} catch (Exception e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+		
+		try {
+			c = new CustomerInfo();
+			float amount = 0;
+			boolean check = c.checkSavingsInfo(Long.parseLong(t2.getText()), t1.getText());
+				if(t1.getText().equals("") && t2.getText().equals("") && e.getSource()==bcreate)
+				{
+					f.setVisible(false);
+						try {
+							new createAccount();
+						} catch (Exception e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
 				}
-		}
-		else
-		{
-			try {
-				c = new CustomerInfo();
-				float amount = 0;
-				if(c.checkSavingsInfo(Long.parseLong(t2.getText()), t1.getText()) && e.getSource()==b1)
+				
+				else if(check && e.getSource()==b1)
 				{
 					new SavingsAccount(Long.parseLong(t2.getText()), t1.getText(),amount);
 					f.setVisible(false);
 				}
-				else
+				else if(c.checkCurrentInfo(Long.parseLong(t2.getText()), ""))
 				{
-					l3.setText("Enter Valid credentials");
+					l3.setText("Incorrect username");
+				}
+				else if(c.checkCurrentInfo(Long.parseLong(""), t1.getText()))
+				{
+					l3.setText("Incorrect password");
+				}
+				else if(c.checkCurrentInfo(Long.parseLong(""), ""))
+				{
+					l3.setText("Enter Credentials");
 				}
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
@@ -108,4 +117,4 @@ public class SavingsAccountLogin extends WindowAdapter implements ActionListener
 		
 	}
 	
-}
+
