@@ -1,5 +1,6 @@
 package accountCreation;
 
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -53,12 +54,12 @@ public class createAccount extends WindowAdapter implements ActionListener,ItemL
 		l5 = new JLabel("User Name: ");
 		l6 = new JLabel("Password: ");
 		
-		l1.setBounds(10, 20, 150, 30);
-		l2.setBounds(10, 50, 200, 30);
-		l4.setBounds(250, 50, 200, 30);
+		l1.setBounds(100, 20, 300, 30);
+		l2.setBounds(80, 50, 300, 30);
+		l4.setBounds(220, 50, 200, 30);
 		l3.setBounds(10, 80, 300, 30);
-		l5.setBounds(10, 110, 300, 30);
-		l6.setBounds(10, 140, 300, 30);
+		l5.setBounds(140, 110, 500, 30);
+		l6.setBounds(140, 140, 500, 30);
 		
 		
 		t1.setBounds(210, 20, 150, 30);
@@ -73,18 +74,24 @@ public class createAccount extends WindowAdapter implements ActionListener,ItemL
 		
 		
 		f.add(l1);
-		f.add(b1);
+		f.add(t1);
+		
 		f.add(l2);
 		f.add(l4);
-		f.add(l5);
-		f.add(l6);
+		
 		f.add(l3);
-		f.add(t1);
 		f.add(t2);
-		f.add(t3);
+
+		f.add(l5);
+		f.add(t3);		
+		
+		f.add(l6);
 		f.add(t4);
+		
 		f.add(cb1);
 		f.add(cb2);
+		
+		f.add(b1);
 		
 		t1.addActionListener(this);
 		t2.addActionListener(this);
@@ -92,9 +99,9 @@ public class createAccount extends WindowAdapter implements ActionListener,ItemL
 		cb1.addItemListener(this);
 		cb2.addItemListener(this);
 		
-		f.setSize(700,600);
+		f.setSize(500,400);
 		f.setVisible(true);
-		f.setLayout(null);
+		f.setLayout(new GridLayout(12,2));
 		f.revalidate();
 		f.addWindowListener(this);
 	}

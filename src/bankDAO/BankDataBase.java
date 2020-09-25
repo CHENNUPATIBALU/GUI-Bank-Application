@@ -21,7 +21,6 @@ public class BankDataBase {
 	
 	public void createDB() throws Exception
 	{
-		boolean dbPresent = false;
 		st = con.createStatement();
 		DatabaseMetaData dmd = con.getMetaData();
 		ResultSet r = dmd.getCatalogs();
