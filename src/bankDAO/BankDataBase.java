@@ -56,8 +56,8 @@ public class BankDataBase {
 		}
 		else
 		{
-			st.executeUpdate("create table savings(accno int(15),name varchar(20),balance float(10))");
-			st.executeUpdate("create table current(accno int(15),name varchar(20),balance float(10))");
+			st.executeUpdate("create table savings(accno long(15),name varchar(20),balance float(10),username varchar(20),password varchar(20))");
+			st.executeUpdate("create table current(accno long(15),name varchar(20),balance float(10),username varchar(20),password varchar(20))");
 			System.out.println("Savings and Current accounts tables created");
 		}
 		

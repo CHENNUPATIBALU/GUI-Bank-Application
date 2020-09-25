@@ -79,7 +79,7 @@ public class SavingsAccountLogin extends WindowAdapter implements ActionListener
 		try {
 			c = new CustomerInfo();
 			float amount = 0;
-			boolean check = c.checkSavingsInfo(Long.parseLong(t2.getText()), t1.getText());
+			boolean check = c.checkSavingsInfo(t2.getText(), t1.getText());
 				if(t1.getText().equals("") && t2.getText().equals("") && e.getSource()==bcreate)
 				{
 					f.setVisible(false);
@@ -96,15 +96,15 @@ public class SavingsAccountLogin extends WindowAdapter implements ActionListener
 					new SavingsAccount(Long.parseLong(t2.getText()), t1.getText(),amount);
 					f.setVisible(false);
 				}
-				else if(c.checkCurrentInfo(Long.parseLong(t2.getText()), ""))
+				else if(c.checkCurrentInfo(t2.getText(), "") && e.getSource()==b1)
 				{
 					l3.setText("Incorrect username");
 				}
-				else if(c.checkCurrentInfo(Long.parseLong(""), t1.getText()))
+				else if(c.checkCurrentInfo("", t1.getText()) && e.getSource()==b1)
 				{
 					l3.setText("Incorrect password");
 				}
-				else if(c.checkCurrentInfo(Long.parseLong(""), ""))
+				else if(c.checkCurrentInfo("","") && e.getSource()==b1)
 				{
 					l3.setText("Enter Credentials");
 				}

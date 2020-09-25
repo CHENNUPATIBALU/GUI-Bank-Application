@@ -18,12 +18,14 @@ public class SavingsDAO {
 		con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bank", "root", "baluvinay123");
 	}
 	
-	public void insertSavingsTb(long ano,String name,float amount) throws Exception
+	public void insertSavingsTb(long ano,String name,float amount,String uname,String pass) throws Exception
 	{
-		pst = con.prepareStatement("insert into savings values(?,?,?)");
+		pst = con.prepareStatement("insert into savings values(?,?,?,?,?)");
 		pst.setLong(1,ano);
 		pst.setString(2, name);
 		pst.setFloat(3, amount);
+		pst.setString(3, uname);
+		pst.setString(4, pass);
 		pst.executeUpdate();
 	}
 	public void displaySavingsTb() throws Exception
@@ -31,14 +33,14 @@ public class SavingsDAO {
 		st = con.createStatement();
 		ResultSet rst = st.executeQuery("select * from savings");
 		System.out.println("** SAVINGS ACCOUNTS **");
-		System.out.println("_____________________________");
-		System.out.println("Account No | Name | Amount |");
-		System.out.println("_____________________________");
+		System.out.println("_____________________________________");
+		System.out.println("Account No | Name | Amount | UserName | Password |");
+		System.out.println("_____________________________________");
 		while(rst.next())
 		{
-			System.out.println(rst.getInt(1)+"  |  "+rst.getString(2)+"  |  "+rst.getFloat(3));
+			System.out.println(rst.getInt(1)+"  |  "+rst.getString(2)+"  |  "+rst.getFloat(3)+"  |  "+rst.getString(3)+"  |  "+rst.getString(4));
 		}
-		System.out.println("_____________________________");
+		System.out.println("_____________________________________");
 		System.out.println();
 	}
 	public void savingsBalanceEnquiry(long ano) throws Exception

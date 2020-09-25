@@ -18,10 +18,10 @@ import bankGUI.AccountSelection;
 public class createAccount extends WindowAdapter implements ActionListener,ItemListener{
 
 	JFrame f;
-	JTextField t1,t2;
+	JTextField t1,t2,t3,t4;
 	JButton b1;
 	JCheckBox cb1,cb2;
-	JLabel l1,l2,l3,l4;
+	JLabel l1,l2,l3,l4,l5,l6;
 	int accno;
 	int choice;
 	CurrentDAO cd;
@@ -35,6 +35,8 @@ public class createAccount extends WindowAdapter implements ActionListener,ItemL
 		f = new JFrame("Account Creation");
 		t1 = new JTextField();
 		t2 = new JTextField();
+		t3 = new JTextField();
+		t4 = new JTextField();
 		
 		accno=rand.nextInt(999999999);
 		
@@ -48,14 +50,21 @@ public class createAccount extends WindowAdapter implements ActionListener,ItemL
 		l2 = new JLabel("Your Account Number: ");
 		l3 = new JLabel("Enter the amount for initial deposit: ");
 		l4 = new JLabel();
+		l5 = new JLabel("User Name: ");
+		l6 = new JLabel("Password: ");
 		
 		l1.setBounds(10, 20, 150, 30);
 		l2.setBounds(10, 50, 200, 30);
 		l4.setBounds(250, 50, 200, 30);
 		l3.setBounds(10, 80, 300, 30);
+		l5.setBounds(10, 110, 300, 30);
+		l6.setBounds(10, 140, 300, 30);
+		
 		
 		t1.setBounds(210, 20, 150, 30);
 		t2.setBounds(210, 80, 150, 30);
+		t3.setBounds(210, 140, 150, 30);
+		t4.setBounds(210, 200, 150, 30);
 		
 		b1.setBounds(250, 200, 80, 30);
 		
@@ -67,9 +76,13 @@ public class createAccount extends WindowAdapter implements ActionListener,ItemL
 		f.add(b1);
 		f.add(l2);
 		f.add(l4);
+		f.add(l5);
+		f.add(l6);
 		f.add(l3);
 		f.add(t1);
 		f.add(t2);
+		f.add(t3);
+		f.add(t4);
 		f.add(cb1);
 		f.add(cb2);
 		
@@ -79,32 +92,32 @@ public class createAccount extends WindowAdapter implements ActionListener,ItemL
 		cb1.addItemListener(this);
 		cb2.addItemListener(this);
 		
-		f.setSize(700,300);
+		f.setSize(700,600);
 		f.setVisible(true);
 		f.setLayout(null);
 		f.revalidate();
 		f.addWindowListener(this);
 	}
 	
-	public void createSavingsAccount(long acno,String name,float amount) throws Exception
+	public void createSavingsAccount(long acno,String name,float amount,String uName,String pass) throws Exception
 	{
 		SavingsDAO sd;
 		SavingsAccount sa;
 		sd = new SavingsDAO();
 		sa = new SavingsAccount(acno,name,amount);
 		acno = this.accno;
-		sd.insertSavingsTb(accno, name, amount);
+		sd.insertSavingsTb(accno, name, amount,uName,pass);
 		sa.setSavingsnameDetails(name, accno, amount);
 		System.out.println("Savings Account Created Successfully");
 	}
-	public void createCurrentAccount(long acno,String name,float amount) throws Exception
+	public void createCurrentAccount(long acno,String name,float amount,String uName,String pass) throws Exception
 	{
 		CurrentDAO cd;
 		CurrentAccount ca;
 		cd = new CurrentDAO();
 		ca = new CurrentAccount(acno,name,amount);
 		acno = this.accno;
-		cd.insertCurrentTb(accno, name, amount);
+		cd.insertCurrentTb(accno, name, amount,uName,pass);
 		ca.setCurrentnameDetails(name, accno, amount);
 		System.out.println("Current Account Created Successfully");
 	}
@@ -122,7 +135,7 @@ public class createAccount extends WindowAdapter implements ActionListener,ItemL
 			try
 			{
 				try {
-					new createAccount().createSavingsAccount(accno, t1.getText(), Float.parseFloat(t2.getText()));
+					new createAccount().createSavingsAccount(accno, t1.getText(), Float.parseFloat(t2.getText()),t3.getText(),t4.getText());
 				} catch (NumberFormatException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -138,7 +151,7 @@ public class createAccount extends WindowAdapter implements ActionListener,ItemL
 			try
 			{
 				try {
-					new createAccount().createCurrentAccount(accno, t1.getText(), Float.parseFloat(t2.getText()));
+					new createAccount().createCurrentAccount(accno, t1.getText(), Float.parseFloat(t2.getText()),t3.getText(),t4.getText());
 				} catch (NumberFormatException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();

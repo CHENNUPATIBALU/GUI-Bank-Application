@@ -18,13 +18,13 @@ public class CustomerInfo {
 		con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bank", "root", "baluvinay123");
 	}
 	
-	public boolean checkSavingsInfo(long acc,String name) throws Exception
+	public boolean checkSavingsInfo(String uName,String pass) throws Exception
 	{
 		ResultSet rst = st.executeQuery("select * from savings");
 		int sav = 0;
 		while(rst.next())
 		{
-			if(rst.getLong(1)==acc && rst.getString(2).equals(name))
+			if(rst.getString(3).equals(uName) && rst.getString(4).equals(pass))
 			{
 				sav = 1;
 				break;
@@ -37,12 +37,12 @@ public class CustomerInfo {
 		}
 		return false;
 	}
-	public boolean checkCurrentInfo(long acc,String name) throws Exception
+	public boolean checkCurrentInfo(String uName, String pass) throws Exception
 	{
 		ResultSet rst = st.executeQuery("select * from current");
 		while(rst.next())
 		{
-			if((rst.getLong(1)==acc) && rst.getString(2).equals(name))
+			if(rst.getString(3).equals(uName) && rst.getString(4).equals(pass))
 			{
 				return true;
 			}

@@ -88,20 +88,20 @@ public class CurrentAccountLogin extends WindowAdapter implements ActionListener
 				}
 				ci = new CustomerInfo();
 				float amount = 0;
-				if(ci.checkCurrentInfo(Long.parseLong(t2.getText()), t1.getText()) && e.getSource()==b1)
+				if(ci.checkCurrentInfo(t2.getText(), t1.getText()) && e.getSource()==b1)
 				{
 					new CurrentAccount(Long.parseLong(t2.getText()), t1.getText(),amount);
 					f.setVisible(false);
 				}
-				else if(ci.checkCurrentInfo(Long.parseLong(t2.getText()), ""))
+				else if(ci.checkCurrentInfo(t2.getText(), "") && e.getSource()==b1)
 				{
 					l3.setText("Incorrect username");
 				}
-				else if(ci.checkCurrentInfo(Long.parseLong(""), t1.getText()))
+				else if(ci.checkCurrentInfo("", t1.getText()) && e.getSource()==b1)
 				{
 					l3.setText("Incorrect password");
 				}
-				else if(ci.checkCurrentInfo(Long.parseLong(""), ""))
+				else if(ci.checkCurrentInfo("", "") && e.getSource()==b1)
 				{
 					l3.setText("Enter Credentials");
 				}

@@ -22,12 +22,14 @@ public class CurrentDAO {
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bank", "root", "baluvinay123");
 	}
-	public void insertCurrentTb(long ano,String name,float amount) throws Exception
+	public void insertCurrentTb(long ano,String name,float amount,String uname,String pass) throws Exception
 	{
-		pst = con.prepareStatement("insert into current values(?,?,?)");
+		pst = con.prepareStatement("insert into current values(?,?,?,?,?)");
 		pst.setLong(1,ano);
 		pst.setString(2, name);
 		pst.setFloat(3, amount);
+		pst.setString(3, uname);
+		pst.setString(4, pass);
 		pst.executeUpdate();
 	}
 	public void displayCurrentTb() throws Exception
@@ -35,14 +37,14 @@ public class CurrentDAO {
 		st = con.createStatement();
 		ResultSet rst = st.executeQuery("select * from current");
 		System.out.println("** CURRENT ACCOUNTS **");
-		System.out.println("_____________________________");
-		System.out.println("Account No | Name | Amount |");
-		System.out.println("_____________________________");
+		System.out.println("_____________________________________");
+		System.out.println("Account No | Name | Amount | UserName | Password |");
+		System.out.println("_____________________________________");
 		while(rst.next())
 		{
-			System.out.println(rst.getInt(1)+"  |  "+rst.getString(2)+"  |  "+rst.getFloat(3));
+			System.out.println(rst.getInt(1)+"  |  "+rst.getString(2)+"  |  "+rst.getFloat(3)+"  |  "+rst.getString(4)+"  |  "+rst.getString(5));
 		}
-		System.out.println("_____________________________");
+		System.out.println("_____________________________________");
 		System.out.println();
 	}
 	public void currentBalanceEnquiry(long ano) throws Exception
