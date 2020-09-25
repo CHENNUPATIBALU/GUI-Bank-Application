@@ -80,26 +80,27 @@ public class createAccount extends WindowAdapter implements ActionListener,ItemL
 		f.setSize(700,300);
 		f.setVisible(true);
 		f.setLayout(null);
+		f.revalidate();
 		f.addWindowListener(this);
 	}
 	
-	public void createSavingsAccount(int acno,String name,float amount) throws Exception
+	public void createSavingsAccount(long acno,String name,float amount) throws Exception
 	{
 		SavingsDAO sd;
 		SavingsAccount sa;
 		sd = new SavingsDAO();
-		sa = new SavingsAccount();
+		sa = new SavingsAccount(acno,name,amount);
 		acno = this.accno;
 		sd.insertSavingsTb(accno, name, amount);
 		sa.setSavingsnameDetails(name, accno, amount);
 		System.out.println("Savings Account Created Successfully");
 	}
-	public void createCurrentAccount(int acno,String name,float amount) throws Exception
+	public void createCurrentAccount(long acno,String name,float amount) throws Exception
 	{
 		CurrentDAO cd;
 		CurrentAccount ca;
 		cd = new CurrentDAO();
-		ca = new CurrentAccount();
+		ca = new CurrentAccount(acno,name,amount);
 		acno = this.accno;
 		cd.insertCurrentTb(accno, name, amount);
 		ca.setCurrentnameDetails(name, accno, amount);
@@ -109,28 +110,6 @@ public class createAccount extends WindowAdapter implements ActionListener,ItemL
 	public void windowClosing(WindowEvent e)
 	{
 		System.exit(0);
-	}
-	@Override
-	public void itemStateChanged(ItemEvent ie) {
-		if(ie.getStateChange()==1 && ie.getSource()==cb1)
-		{
-			l4.setText(""+accno);
-			choice = 1;
-		}
-		if(ie.getStateChange()==1 && ie.getSource()==cb2)
-		{
-			l4.setText(""+accno);
-			choice = 2;
-		}
-		if(ie.getStateChange()==1 && ie.getSource()==cb1 && ie.getSource()==cb2)
-		{
-			f.setTitle("* Select any one CheckBox");
-		}
-		else
-		{
-			f.setTitle("Account Creation");
-		}
-		
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -167,5 +146,28 @@ public class createAccount extends WindowAdapter implements ActionListener,ItemL
 			catch(Exception ae) {}
 		}
 	}
-	
+
+	@Override
+	public void itemStateChanged(ItemEvent ie) {
+		if(ie.getStateChange()==1 && ie.getSource()==cb1)
+		{
+			l4.setText(""+accno);
+			choice = 1;
+		}
+		if(ie.getStateChange()==1 && ie.getSource()==cb2)
+		{
+			l4.setText(""+accno);
+			choice = 2;
+		}
+		if(ie.getStateChange()==1 && ie.getSource()==cb1 && ie.getSource()==cb2)
+		{
+			f.setTitle("* Select any one CheckBox");
+		}
+		else
+		{
+			f.setTitle("Account Creation");
+		}
+		
+	}
+		
 }

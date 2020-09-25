@@ -1,6 +1,5 @@
 package bankGUI;
 
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
@@ -67,13 +66,11 @@ public class BankAdminLogin extends WindowAdapter implements ActionListener{
 		f.setLayout(null);
 		f.setSize(450, 300);
 		f.setVisible(true);
-		f.setBackground(Color.WHITE);
 		f.addWindowListener(this);
 		
 		f1.setLayout(null);
 		f1.setSize(450, 300);
 		f1.setVisible(false);
-		f1.setBackground(Color.WHITE);
 		f1.addWindowListener(this);
 		
 		t1.addActionListener(this);
@@ -128,13 +125,13 @@ public class BankAdminLogin extends WindowAdapter implements ActionListener{
 		{
 			f1.setVisible(false);
 			new SavingsAccountLogin();
-			f1.setVisible(true);
 		}		
 		else if(e.getSource()==bc)
 		{
 			f1.setVisible(false);
 			new CurrentAccountLogin();
 		}
+		f1.setVisible(true);
 
 	}
 

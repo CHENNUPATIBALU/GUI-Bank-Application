@@ -1,6 +1,5 @@
 package bankGUI;
 
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
@@ -13,12 +12,13 @@ import javax.swing.JTextField;
 
 import accountCreation.createAccount;
 import customerUI.CurrentAccount;
+import customerUI.CustomerInfo;
 
 public class CurrentAccountLogin extends WindowAdapter implements ActionListener {
 
 	JFrame f;
 	JTextField t1,t2;
-	JLabel l1,l2,l3,l4;
+	JLabel l1,l2,l3;
 	JButton b1,bcreate;
 	createAccount c;
 	
@@ -28,8 +28,7 @@ public class CurrentAccountLogin extends WindowAdapter implements ActionListener
 		
 		l1 = new JLabel("Enter User Name: ");
 		l2 = new JLabel("Enter Password: ");
-		l3 = new JLabel("Incorrect username");
-		l4 = new JLabel("Incorrect password");
+		l3 = new JLabel();
 		
 		try {
 			c = new createAccount();
@@ -53,7 +52,6 @@ public class CurrentAccountLogin extends WindowAdapter implements ActionListener
 		l1.setBounds(45, 40, 120, 20);
 		l2.setBounds(45, 90, 120, 20);
 		l3.setBounds(310, 40, 150, 30);
-		l4.setBounds(310, 90, 150, 30);
 		
 		f.add(l1);
 		f.add(l2);
@@ -61,17 +59,14 @@ public class CurrentAccountLogin extends WindowAdapter implements ActionListener
 		f.add(t2);
 		f.add(b1);
 		f.add(l3);
-		f.add(l4);
 		f.add(bcreate);
 		
 		l3.setVisible(false);
-		l4.setVisible(false);
 		
 		
 		f.setLayout(null);
 		f.setSize(450, 300);
 		f.setVisible(true);
-		f.setBackground(Color.WHITE);
 		f.addWindowListener(this);
 		
 		t1.addActionListener(this);
@@ -86,34 +81,35 @@ public class CurrentAccountLogin extends WindowAdapter implements ActionListener
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(t1.getText().equals("") && t2.getText().equals("") && e.getSource()==bcreate)
-		{
-			f.setVisible(false);
-			try {
-				new createAccount();
-			} catch (Exception e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+		CustomerInfo ci;
+		
+		try {
+			if(t1.getText().equals("") && t2.getText().equals("") && e.getSource()==bcreate)
+			{
+				f.setVisible(false);
+				try {
+					new createAccount();
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
-		}
-		if(t1.getText().equalsIgnoreCase("balu") && t2.getText().equalsIgnoreCase("abcd123") && e.getSource()==b1)
-		{
-			new CurrentAccount();
-			f.setVisible(false);
-		}
-		else if(!t1.getText().equalsIgnoreCase("balu") && t2.getText().equalsIgnoreCase("abcd123") && e.getSource()==b1)
-		{
-			l3.setVisible(true);
-			l4.setVisible(false);
-			
-		}
-		else if(t1.getText().equalsIgnoreCase("balu") && !t2.getText().equalsIgnoreCase("abcd123") && e.getSource()==b1)
-		{
-			l4.setVisible(true);
-			l3.setVisible(false);
-		}
-		else
-			l3.setText("Enter credentials");l3.setVisible(true);
+			ci = new CustomerInfo();
+			float amount = 0;
+			if(ci.checkCurrentInfo(Long.parseLong(t2.getText()), t1.getText()) && e.getSource()==b1)
+			{
+				new CurrentAccount(Long.parseLong(t2.getText()), t1.getText(),amount);
+				f.setVisible(false);
+			}
+			else
+				l3.setText("Enter Valid Credentials");
+		} catch (NumberFormatException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}l3.setVisible(true);
 		
 		
 	}

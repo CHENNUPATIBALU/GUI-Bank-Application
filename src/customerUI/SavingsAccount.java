@@ -13,16 +13,27 @@ public class SavingsAccount extends WindowAdapter implements ActionListener {
 	JTextField t1;
 	JLabel lname,laccno,lbalance;
 	JButton withdraw_button,deposit_button,balance_enquiry_button;
+	long saccno;
+	String sname;
+	float sbalance;
 	
 	
 	
-	public SavingsAccount()
+	public SavingsAccount(long saccno,String sname,float sbalance)
 	{
+		this.sname = sname;
+		this.saccno = saccno;
+		this.sbalance = sbalance;
+		
 		f = new JFrame("Savings Account");
 		t1 = new JTextField();
 		lname = new JLabel();
+		laccno = new JLabel();
+		lbalance = new JLabel();
 		
 		lname.setBounds(10, 10, 200, 100);
+		laccno.setBounds(10, 30, 200, 100);
+		lbalance.setBounds(10, 50, 200, 100);
 		
 		withdraw_button = new JButton("WithDraw");
 		deposit_button = new JButton("Deposit");
@@ -35,6 +46,8 @@ public class SavingsAccount extends WindowAdapter implements ActionListener {
 		
 		f.add(t1);
 		f.add(lname);
+		f.add(laccno);
+		f.add(lbalance);
 		f.add(withdraw_button);
 		f.add(balance_enquiry_button);
 		f.add(deposit_button);
@@ -56,13 +69,17 @@ public class SavingsAccount extends WindowAdapter implements ActionListener {
 	}
 	public void setSavingsnameDetails(String name,long accno,float amount)
 	{
-		lname.setText(name);
-		laccno.setText(String.valueOf(accno).toString());
-		lbalance.setText(String.valueOf(amount).toString());
+		name = this.sname;
+		accno = this.saccno;
+		amount = this.sbalance;
+		
+		lname.setText("Account Holder Name: "+name);
+		laccno.setText("Account Number: "+accno);
+		lbalance.setText("Balance: "+amount);
 	}
 	public void setSavingsAmount(float amount)
 	{
-		lbalance.setText(String.valueOf(amount).toString());
+		lbalance.setText("Balance: "+amount);
 	}
 	
 }

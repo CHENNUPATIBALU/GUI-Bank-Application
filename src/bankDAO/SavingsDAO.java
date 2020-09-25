@@ -9,7 +9,7 @@ public class SavingsDAO {
 	Connection con;
 	Statement st;
 	Random rand = new Random();
-	SavingsAccount s = new SavingsAccount();
+	SavingsAccount s = new SavingsAccount(0, null, 0);
 	
 	public SavingsDAO() throws Exception
 	{
@@ -18,10 +18,10 @@ public class SavingsDAO {
 		con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bank", "root", "baluvinay123");
 	}
 	
-	public void insertSavingsTb(int ano,String name,float amount) throws Exception
+	public void insertSavingsTb(long ano,String name,float amount) throws Exception
 	{
 		pst = con.prepareStatement("insert into savings values(?,?,?)");
-		pst.setInt(1,ano);
+		pst.setLong(1,ano);
 		pst.setString(2, name);
 		pst.setFloat(3, amount);
 		pst.executeUpdate();
@@ -41,17 +41,17 @@ public class SavingsDAO {
 		System.out.println("_____________________________");
 		System.out.println();
 	}
-	public void savingsBalanceEnquiry(int ano) throws Exception
+	public void savingsBalanceEnquiry(long ano) throws Exception
 	{
 		ResultSet rst = pst.executeQuery("select balance from savings where accno = "+ano);
 		while(rst.next())
 			s.setSavingsAmount(rst.getFloat(1));
 	}
-	public void savingsWithdraw(int ano,float money) throws Exception
+	public void savingsWithdraw(long ano,float money) throws Exception
 	{
 		pst = con.prepareStatement("update savings set balance=balance-? where accno = ?");
 		pst.setFloat(1, money);
-		pst.setInt(2, ano);
+		pst.setLong(2, ano);
 		pst.executeUpdate();
 		ResultSet rst = pst.executeQuery("select balance from savings where accno = "+ano);
 		while(rst.next())
@@ -67,7 +67,7 @@ public class SavingsDAO {
 		while(rst.next())
 			s.setSavingsAmount(rst.getFloat(1));
 	}
-	public void displaySavingsAccount(int ano) throws Exception
+	public void displaySavingsAccount(long ano) throws Exception
 	{
 		ResultSet rst = pst.executeQuery("select * from savings where accno = "+ano);
 		while(rst.next())
