@@ -3,8 +3,6 @@ package accountCreation;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.Random;
@@ -16,12 +14,12 @@ import customerUI.SavingsAccount;
 import bankDAO.CurrentDAO;
 import bankGUI.AccountSelection;
 
-public class createAccount extends WindowAdapter implements ActionListener,ItemListener{
+public class createAccount extends WindowAdapter implements ActionListener{
 
 	JFrame f;
 	JTextField t1,t2,t3,t4;
 	JButton b1;
-	JCheckBox cb1,cb2;
+	JRadioButton rb1,rb2;
 	JLabel l1,l2,l3,l4,l5,l6;
 	int accno;
 	int choice;
@@ -39,10 +37,10 @@ public class createAccount extends WindowAdapter implements ActionListener,ItemL
 		t3 = new JTextField();
 		t4 = new JTextField();
 		
-		accno=rand.nextInt(999999999);
+		rb1 = new JRadioButton("Savings");
+		rb2 = new JRadioButton("Current");
 		
-		cb1 = new JCheckBox("Savings");
-		cb2 = new JCheckBox("Current");
+		accno=rand.nextInt(999999999);
 		
 		b1 = new JButton("Create");
 		
@@ -69,8 +67,8 @@ public class createAccount extends WindowAdapter implements ActionListener,ItemL
 		
 		b1.setBounds(250, 300, 80, 30);
 		
-		cb1.setBounds(210, 180, 100, 30);
-		cb2.setBounds(220, 130, 100, 30);
+		rb1.setBounds(210, 180, 100, 30);
+		rb2.setBounds(220, 130, 100, 30);
 		
 		
 		f.add(l1);
@@ -88,16 +86,16 @@ public class createAccount extends WindowAdapter implements ActionListener,ItemL
 		f.add(l6);
 		f.add(t4);
 		
-		f.add(cb1);
-		f.add(cb2);
+		f.add(rb1);
+		f.add(rb2);
 		
 		f.add(b1);
 		
 		t1.addActionListener(this);
 		t2.addActionListener(this);
 		b1.addActionListener(this);
-		cb1.addItemListener(this);
-		cb2.addItemListener(this);
+		rb1.addActionListener(this);
+		rb2.addActionListener(this);
 		
 		f.setSize(500,400);
 		f.setVisible(true);
@@ -137,8 +135,9 @@ public class createAccount extends WindowAdapter implements ActionListener,ItemL
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(choice==1 && e.getSource()==b1)
+		if(rb1.isSelected() && e.getSource()==b1)
 		{
+			rb2.setSelected(false);
 			try
 			{
 				try {
@@ -153,8 +152,9 @@ public class createAccount extends WindowAdapter implements ActionListener,ItemL
 			}
 			catch(Exception ae) {}
 		}
-		else if(choice==2 && e.getSource()==b1)
+		else if(rb2.isSelected() && e.getSource()==b1)
 		{
+			rb1.setSelected(false);
 			try
 			{
 				try {
@@ -169,29 +169,6 @@ public class createAccount extends WindowAdapter implements ActionListener,ItemL
 			}
 			catch(Exception ae) {}
 		}
-	}
-
-	@Override
-	public void itemStateChanged(ItemEvent ie) {
-		if(ie.getStateChange()==1 && ie.getSource()==cb1)
-		{
-			l4.setText(""+accno);
-			choice = 1;
-		}
-		if(ie.getStateChange()==1 && ie.getSource()==cb2)
-		{
-			l4.setText(""+accno);
-			choice = 2;
-		}
-		if(ie.getStateChange()==1 && ie.getSource()==cb1 && ie.getSource()==cb2)
-		{
-			f.setTitle("* Select any one CheckBox");
-		}
-		else
-		{
-			f.setTitle("Account Creation");
-		}
-		
 	}
 		
 }

@@ -78,7 +78,6 @@ public class SavingsAccountLogin extends WindowAdapter implements ActionListener
 		
 		try {
 			c = new CustomerInfo();
-			float amount = 0;
 			boolean check = c.checkSavingsInfo(t2.getText(), t1.getText());
 				if(t1.getText().equals("") && t2.getText().equals("") && e.getSource()==bcreate)
 				{

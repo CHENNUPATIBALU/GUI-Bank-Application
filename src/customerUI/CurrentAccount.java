@@ -64,8 +64,10 @@ public class CurrentAccount extends WindowAdapter implements ActionListener {
 	
 	public void show()
 	{
+		
 		f.setVisible(true);
 	}
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		

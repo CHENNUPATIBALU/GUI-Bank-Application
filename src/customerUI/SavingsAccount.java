@@ -50,7 +50,6 @@ public class SavingsAccount extends WindowAdapter implements ActionListener {
 		
 		f.setLayout(null);
 		f.setSize(550, 300);
-		f.setVisible(true);
 		f.addWindowListener(this);
 	}
 	public void windowClosing(WindowEvent e)
@@ -59,6 +58,11 @@ public class SavingsAccount extends WindowAdapter implements ActionListener {
 		f.setVisible(false);
 		a.FrameVisible(true);	
 	}
+	public void show()
+	{
+		f.setVisible(true);
+	}
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
