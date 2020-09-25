@@ -22,19 +22,12 @@ public class CustomerInfo {
 	public boolean checkSavingsInfo(String uName,String pass) throws Exception
 	{
 		ResultSet rst = st.executeQuery("select * from savings");
-		int sav = 0;
 		while(rst.next())
 		{
 			if(rst.getString(3).equals(uName) && rst.getString(4).equals(pass))
 			{
-				sav = 1;
-				break;
+				return true;
 			}
-			sav = 0;
-		}
-		if(sav==0)
-		{
-			return true;
 		}
 		return false;
 	}

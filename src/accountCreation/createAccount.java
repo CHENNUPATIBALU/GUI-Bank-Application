@@ -111,7 +111,7 @@ public class createAccount extends WindowAdapter implements ActionListener,ItemL
 		SavingsDAO sd;
 		SavingsAccount sa;
 		sd = new SavingsDAO();
-		sa = new SavingsAccount(acno,name,amount);
+		sa = new SavingsAccount();
 		acno = this.accno;
 		sd.insertSavingsTb(accno, name, amount,uName,pass);
 		sa.setSavingsnameDetails(name, accno, amount);
@@ -122,7 +122,7 @@ public class createAccount extends WindowAdapter implements ActionListener,ItemL
 		CurrentDAO cd;
 		CurrentAccount ca;
 		cd = new CurrentDAO();
-		ca = new CurrentAccount(acno,name,amount);
+		ca = new CurrentAccount();
 		acno = this.accno;
 		cd.insertCurrentTb(accno, name, amount,uName,pass);
 		ca.setCurrentnameDetails(name, accno, amount);

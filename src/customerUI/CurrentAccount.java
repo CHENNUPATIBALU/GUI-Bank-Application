@@ -17,18 +17,11 @@ public class CurrentAccount extends WindowAdapter implements ActionListener {
 	JTextField t1;
 	JLabel lname,laccno,lbalance;
 	JButton withdraw_button,deposit_button,balance_enquiry_button;
-	long caccno;
-	String cname;
-	float cbalance;
 	AccountSelection a;
 	
 
-	public CurrentAccount(long cacno,String cname,float cbalance)
+	public CurrentAccount()
 	{
-		this.caccno = cacno;
-		this.cname = cname;
-		this.cbalance = cbalance;
-		
 		f = new JFrame("Current Account");
 		t1 = new JTextField();
 		lname = new JLabel();
@@ -60,7 +53,6 @@ public class CurrentAccount extends WindowAdapter implements ActionListener {
 		
 		f.setLayout(null);
 		f.setSize(550, 300);
-		f.setVisible(true);
 		f.addWindowListener(this);
 	}
 	public void windowClosing(WindowEvent e)
@@ -69,16 +61,17 @@ public class CurrentAccount extends WindowAdapter implements ActionListener {
 		f.setVisible(false);
 		a.FrameVisible(true);
 	}
+	
+	public void show()
+	{
+		f.setVisible(true);
+	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
 	}
 	public void setCurrentnameDetails(String name,long accno,float amount)
 	{
-		name = this.cname;
-		accno = this.caccno;
-		amount = this.cbalance;
-		
 		lname.setText("Account Holder Name: "+name);
 		laccno.setText("Account Number: "+accno);
 		lbalance.setText("Balance: "+amount);

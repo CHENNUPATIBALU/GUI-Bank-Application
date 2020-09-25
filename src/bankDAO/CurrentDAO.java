@@ -13,7 +13,7 @@ public class CurrentDAO {
 	PreparedStatement pst;
 	Connection con;
 	Statement st;
-	CurrentAccount c = new CurrentAccount(0, null, 0);
+	CurrentAccount c = new CurrentAccount();
 	
 	Random rand = new Random();
 	
@@ -28,8 +28,8 @@ public class CurrentDAO {
 		pst.setLong(1,ano);
 		pst.setString(2, name);
 		pst.setFloat(3, amount);
-		pst.setString(3, uname);
-		pst.setString(4, pass);
+		pst.setString(4, uname);
+		pst.setString(5, pass);
 		pst.executeUpdate();
 	}
 	public void displayCurrentTb() throws Exception

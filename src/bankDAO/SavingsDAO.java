@@ -9,7 +9,7 @@ public class SavingsDAO {
 	Connection con;
 	Statement st;
 	Random rand = new Random();
-	SavingsAccount s = new SavingsAccount(0, null, 0);
+	SavingsAccount s = new SavingsAccount();
 	
 	public SavingsDAO() throws Exception
 	{
@@ -24,8 +24,8 @@ public class SavingsDAO {
 		pst.setLong(1,ano);
 		pst.setString(2, name);
 		pst.setFloat(3, amount);
-		pst.setString(3, uname);
-		pst.setString(4, pass);
+		pst.setString(4, uname);
+		pst.setString(5, pass);
 		pst.executeUpdate();
 	}
 	public void displaySavingsTb() throws Exception

@@ -87,10 +87,9 @@ public class CurrentAccountLogin extends WindowAdapter implements ActionListener
 					}
 				}
 				ci = new CustomerInfo();
-				float amount = 0;
 				if(ci.checkCurrentInfo(t2.getText(), t1.getText()) && e.getSource()==b1)
 				{
-					new CurrentAccount(Long.parseLong(t2.getText()), t1.getText(),amount);
+					new CurrentAccount();
 					f.setVisible(false);
 				}
 				else if(ci.checkCurrentInfo(t2.getText(), "") && e.getSource()==b1)

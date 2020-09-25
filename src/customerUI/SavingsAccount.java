@@ -14,19 +14,12 @@ public class SavingsAccount extends WindowAdapter implements ActionListener {
 	JTextField t1;
 	JLabel lname,laccno,lbalance;
 	JButton withdraw_button,deposit_button,balance_enquiry_button;
-	long saccno;
-	String sname;
-	float sbalance;
 	AccountSelection a;
 	
 	
 	
-	public SavingsAccount(long saccno,String sname,float sbalance)
+	public SavingsAccount()
 	{
-		this.sname = sname;
-		this.saccno = saccno;
-		this.sbalance = sbalance;
-		
 		f = new JFrame("Savings Account");
 		t1 = new JTextField();
 		lname = new JLabel();
@@ -73,10 +66,6 @@ public class SavingsAccount extends WindowAdapter implements ActionListener {
 	}
 	public void setSavingsnameDetails(String name,long accno,float amount)
 	{
-		name = this.sname;
-		accno = this.saccno;
-		amount = this.sbalance;
-		
 		lname.setText("Account Holder Name: "+name);
 		laccno.setText("Account Number: "+accno);
 		lbalance.setText("Balance: "+amount);
