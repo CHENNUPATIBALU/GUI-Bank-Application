@@ -76,6 +76,7 @@ public class CurrentAccountLogin extends WindowAdapter implements ActionListener
 	public void actionPerformed(ActionEvent e) {
 		CustomerInfo ci;
 		try {
+			ci = new CustomerInfo();
 				if(t1.getText().equals("") && t2.getText().equals("") && e.getSource()==bcreate)
 				{
 					f.setVisible(false);
@@ -86,10 +87,10 @@ public class CurrentAccountLogin extends WindowAdapter implements ActionListener
 						e1.printStackTrace();
 					}
 				}
-				ci = new CustomerInfo();
-				if(ci.checkCurrentInfo(t2.getText(), t1.getText()) && e.getSource()==b1)
+				else if(ci.checkCurrentInfo(t2.getText(), t1.getText()) && e.getSource()==b1)
 				{
 					new CurrentAccount();
+					System.out.println("Current Account Login Success");
 					f.setVisible(false);
 				}
 				else if(ci.checkCurrentInfo(t2.getText(), "") && e.getSource()==b1)

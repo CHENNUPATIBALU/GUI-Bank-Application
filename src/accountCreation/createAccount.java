@@ -26,7 +26,7 @@ public class createAccount extends WindowAdapter implements ActionListener{
 	CurrentDAO cd;
 	AccountSelection a;
 	
-	static Random rand = new Random();
+	static Random rand;
 	
 	
 	public createAccount()
@@ -40,6 +40,7 @@ public class createAccount extends WindowAdapter implements ActionListener{
 		rb1 = new JRadioButton("Savings");
 		rb2 = new JRadioButton("Current");
 		
+		rand = new Random();
 		accno=rand.nextInt(999999999);
 		
 		b1 = new JButton("Create");

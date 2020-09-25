@@ -10,6 +10,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import bankGUI.AccountSelection;
+import bankDAO.CurrentDAO;
+import accountProperties.*;
 
 public class CurrentAccount extends WindowAdapter implements ActionListener {
 
@@ -18,6 +20,13 @@ public class CurrentAccount extends WindowAdapter implements ActionListener {
 	JLabel lname,laccno,lbalance;
 	JButton withdraw_button,deposit_button,balance_enquiry_button;
 	AccountSelection a;
+	String name;
+	float amount;
+	long accno;
+	CurrentDAO cd;
+	AmountDeposit ad;
+	AmountWithdraw aw;
+	BalanceEnquiry be;
 	
 
 	public CurrentAccount()
@@ -42,6 +51,10 @@ public class CurrentAccount extends WindowAdapter implements ActionListener {
 		deposit_button.setBounds(330, 50, 190,30);
 		balance_enquiry_button.setBounds(330, 90, 190,30);
 		
+		withdraw_button.addActionListener(this);
+		deposit_button.addActionListener(this);
+		balance_enquiry_button.addActionListener(this);
+		
 		
 		f.add(t1);
 		f.add(lname);
@@ -63,17 +76,37 @@ public class CurrentAccount extends WindowAdapter implements ActionListener {
 	}
 	
 	public void show()
-	{
-		
+	{	
 		f.setVisible(true);
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
+		if(e.getSource()==withdraw_button)
+		{
+			
+			try {
+				aw = new AmountWithdraw();
+				aw.currentWithDrawAmount(accno);
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
+		if(e.getSource()==balance_enquiry_button)
+		{
+			
+		}
+		if(e.getSource()==deposit_button)
+		{
+			
+		}
 	}
 	public void setCurrentnameDetails(String name,long accno,float amount)
 	{
+		this.accno = accno;
+		this.name = name;
+		this.amount = amount;
 		lname.setText("Account Holder Name: "+name);
 		laccno.setText("Account Number: "+accno);
 		lbalance.setText("Balance: "+amount);

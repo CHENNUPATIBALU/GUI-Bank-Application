@@ -93,6 +93,7 @@ public class SavingsAccountLogin extends WindowAdapter implements ActionListener
 				else if(check && e.getSource()==b1)
 				{
 					new SavingsAccount();
+					System.out.println("Savings Account Login Success");
 					f.setVisible(false);
 				}
 				else if(c.checkCurrentInfo(t2.getText(), "") && e.getSource()==b1)

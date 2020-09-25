@@ -53,13 +53,13 @@ public class CurrentDAO {
 		while(rst.next())
 			c.setCurrentAmount(rst.getFloat(1));
 	}
-	public void currentWithdraw(long ano,float money) throws Exception
+	public void currentWithdraw(long accno,float money) throws Exception
 	{
 		pst = con.prepareStatement("update current set balance=balance-? where accno = ?");
 		pst.setFloat(1, money);
-		pst.setLong(2, ano);
+		pst.setLong(2, accno);
 		pst.executeUpdate();
-		ResultSet rst = pst.executeQuery("select balance from savings where accno = "+ano);
+		ResultSet rst = pst.executeQuery("select balance from savings where accno = "+accno);
 		while(rst.next())
 			c.setCurrentAmount(rst.getFloat(1));
 	}
