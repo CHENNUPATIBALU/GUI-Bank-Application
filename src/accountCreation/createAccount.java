@@ -63,13 +63,13 @@ public class createAccount extends WindowAdapter implements ActionListener,ItemL
 		
 		t1.setBounds(210, 20, 150, 30);
 		t2.setBounds(210, 80, 150, 30);
-		t3.setBounds(210, 140, 150, 30);
-		t4.setBounds(210, 200, 150, 30);
+		t3.setBounds(210, 110, 150, 30);
+		t4.setBounds(210, 140, 150, 30);
 		
-		b1.setBounds(250, 200, 80, 30);
+		b1.setBounds(250, 300, 80, 30);
 		
-		cb1.setBounds(210, 120, 100, 30);
-		cb2.setBounds(220, 150, 100, 30);
+		cb1.setBounds(210, 180, 100, 30);
+		cb2.setBounds(220, 130, 100, 30);
 		
 		
 		f.add(l1);

@@ -16,6 +16,7 @@ public class CustomerInfo {
 	{
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bank", "root", "baluvinay123");
+		st = con.createStatement();
 	}
 	
 	public boolean checkSavingsInfo(String uName,String pass) throws Exception

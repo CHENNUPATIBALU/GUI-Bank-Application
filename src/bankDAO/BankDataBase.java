@@ -29,38 +29,20 @@ public class BankDataBase {
 		{
 			if(r.getString(1).equalsIgnoreCase("bank"))
 			{
-				dbPresent = true;
-				break;
+				st.executeUpdate("drop database bank");
 			}
 		}
-		if(dbPresent)
-		{
-			st.executeQuery("use bank");
-			System.out.println("Using Bank Database");
-		}
-		else
-		{
-			st.executeUpdate("create database bank");
-			System.out.println("Bank Database created");
-			st.executeQuery("use bank");
-			System.out.println("Using Bank Database");
-		}
+		st.executeUpdate("create database bank");
+		System.out.println("Bank Database created");
+		st.executeQuery("use bank");
+		System.out.println("Using Bank Database");
 	}
 	
 	public void createBankTB() throws Exception
 	{
-		boolean b = st.execute("select exists(select * from information_schema.tables where table_schema = 'bank' and table_name = 'bank')");
-		if(b)
-		{
-			System.out.println("Savings and Current accounts tables already exists in Bank DataBase");
-		}
-		else
-		{
-			st.executeUpdate("create table savings(accno long(15),name varchar(20),balance float(10),username varchar(20),password varchar(20))");
-			st.executeUpdate("create table current(accno long(15),name varchar(20),balance float(10),username varchar(20),password varchar(20))");
-			System.out.println("Savings and Current accounts tables created");
-		}
-		
+		st.executeUpdate("create table savings(accno int(15),name varchar(20),balance float(10),username varchar(20),password varchar(20))");
+		st.executeUpdate("create table current(accno int(15),name varchar(20),balance float(10),username varchar(20),password varchar(20))");
+		System.out.println("Savings and Current accounts tables created");
 	}
 	
 	
