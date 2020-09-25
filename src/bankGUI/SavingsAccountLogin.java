@@ -11,12 +11,14 @@ import accountCreation.createAccount;
 import customerUI.SavingsAccount;
 import customerUI.CustomerInfo;
 
+
 public class SavingsAccountLogin extends WindowAdapter implements ActionListener{
 
 	JFrame f;
 	JTextField t1,t2;
 	JLabel l1,l2,l3;
 	JButton b1,bcreate;
+	AccountSelection a;
 	
 	public SavingsAccountLogin()
 	{
@@ -65,7 +67,10 @@ public class SavingsAccountLogin extends WindowAdapter implements ActionListener
 	}
 	public void windowClosing(WindowEvent e)
 	{
-		System.exit(0);
+		a = new AccountSelection();
+		f.setVisible(false);
+		a.FrameVisible(true);
+		
 	}
 	@Override
 	public void actionPerformed(ActionEvent e){
