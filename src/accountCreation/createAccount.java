@@ -137,7 +137,7 @@ public class createAccount extends WindowAdapter implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		if(rb1.isSelected() && e.getSource()==b1)
 		{
-			rb2.setSelected(false);
+			l4.setText(""+accno);
 			try
 			{
 				try {
@@ -154,7 +154,7 @@ public class createAccount extends WindowAdapter implements ActionListener{
 		}
 		else if(rb2.isSelected() && e.getSource()==b1)
 		{
-			rb1.setSelected(false);
+			l4.setText(""+accno);
 			try
 			{
 				try {
@@ -168,6 +168,11 @@ public class createAccount extends WindowAdapter implements ActionListener{
 				}
 			}
 			catch(Exception ae) {}
+		}
+		else if(rb1.isSelected() && rb2.isSelected())
+		{
+			rb1.setSelected(false);
+			rb2.setSelected(false);
 		}
 	}
 		
