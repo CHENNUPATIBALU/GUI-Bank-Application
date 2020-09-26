@@ -85,7 +85,6 @@ public class SavingsAccountLogin extends WindowAdapter implements ActionListener
 						try {
 							new createAccount();
 						} catch (Exception e1) {
-							// TODO Auto-generated catch block
 							e1.printStackTrace();
 						}
 				}
@@ -109,7 +108,6 @@ public class SavingsAccountLogin extends WindowAdapter implements ActionListener
 					l3.setText("Enter Credentials");
 				}
 			} catch (Exception e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}l3.setVisible(true);
 		}

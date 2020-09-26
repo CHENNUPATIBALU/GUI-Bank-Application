@@ -21,10 +21,10 @@ public class CustomerInfo {
 	
 	public boolean checkSavingsInfo(String uName,String pass) throws Exception
 	{
-		ResultSet rst = st.executeQuery("select * from savings");
+		ResultSet rst = st.executeQuery("select username,password from savings");
 		while(rst.next())
 		{
-			if(rst.getString(3).equals(uName) && rst.getString(4).equals(pass))
+			if(rst.getString(1).equals(uName) && rst.getString(1).equals(pass))
 			{
 				return true;
 			}
@@ -33,10 +33,10 @@ public class CustomerInfo {
 	}
 	public boolean checkCurrentInfo(String uName, String pass) throws Exception
 	{
-		ResultSet rst = st.executeQuery("select * from current");
+		ResultSet rst = st.executeQuery("select username,password from current");
 		while(rst.next())
 		{
-			if(rst.getString(3).equals(uName) && rst.getString(4).equals(pass))
+			if(rst.getString(1).equals(uName) && rst.getString(2).equals(pass))
 			{
 				return true;
 			}

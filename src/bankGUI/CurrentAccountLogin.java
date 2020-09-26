@@ -83,7 +83,6 @@ public class CurrentAccountLogin extends WindowAdapter implements ActionListener
 					try {
 						new createAccount();
 					} catch (Exception e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
 				}
@@ -107,10 +106,8 @@ public class CurrentAccountLogin extends WindowAdapter implements ActionListener
 				}
 					
 			} catch (NumberFormatException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			} catch (Exception e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}l3.setVisible(true);
 		}
