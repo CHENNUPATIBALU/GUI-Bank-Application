@@ -29,8 +29,12 @@ public class CurrentAccount extends WindowAdapter implements ActionListener {
 	BalanceEnquiry be;
 	
 
-	public CurrentAccount()
+	public CurrentAccount(String name,long acno,float balance)
 	{
+		this.name = name;
+		this.amount = balance;
+		this.accno = acno;
+		
 		f = new JFrame("Current Account");
 		t1 = new JTextField();
 		lname = new JLabel();
@@ -107,6 +111,7 @@ public class CurrentAccount extends WindowAdapter implements ActionListener {
 		this.accno = accno;
 		this.name = name;
 		this.amount = amount;
+		
 		lname.setText("Account Holder Name: "+name);
 		laccno.setText("Account Number: "+accno);
 		lbalance.setText("Balance: "+amount);

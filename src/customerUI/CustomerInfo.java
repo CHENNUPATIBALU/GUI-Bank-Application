@@ -24,7 +24,7 @@ public class CustomerInfo {
 		ResultSet rst = st.executeQuery("select username,password from savings");
 		while(rst.next())
 		{
-			if(rst.getString(1).equals(uName) && rst.getString(1).equals(pass))
+			if(rst.getString(1).equals(uName) && rst.getString(2).equals(pass))
 			{
 				return true;
 			}

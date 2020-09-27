@@ -80,35 +80,14 @@ public class BankAdminLogin extends WindowAdapter implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		
 		AccountSelection a = new AccountSelection();
-		if(t1.getText().equalsIgnoreCase("admin") && t2.getText().equalsIgnoreCase("1234") && e.getSource()==b1)
-		{
-			f.setVisible(false);
-			try {
+		f.setVisible(false);
+		try {
 				a.FrameVisible(true);
 				BankDataBase b = new BankDataBase();
-				b.createDB();
+				b.createDB(t1.getText(),t2.getText());
 				b.createBankTB();
 			} catch (Exception e1) {
 				e1.printStackTrace();
 			}
 		}
-		else if(!t1.getText().equalsIgnoreCase("admin") && t2.getText().equalsIgnoreCase("1234") && e.getSource()==b1)
-		{
-			l3.setVisible(true);
-			l4.setVisible(false);
-			
-		}
-		else if(t1.getText().equalsIgnoreCase("admin") && !t2.getText().equalsIgnoreCase("1234") && e.getSource()==b1)
-		{
-			l4.setVisible(true);
-			l3.setVisible(false);
-		}
-		else
-		{
-			l3.setVisible(true);
-			l3.setText("Enter Credentials");
-		}
-
-	}
-
 }

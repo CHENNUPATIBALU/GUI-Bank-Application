@@ -88,7 +88,7 @@ public class CurrentAccountLogin extends WindowAdapter implements ActionListener
 				}
 				else if(ci.checkCurrentInfo(t2.getText(), t1.getText()) && e.getSource()==b1)
 				{
-					new CurrentAccount();
+					new CurrentAccount(null, 0, 0).show();
 					System.out.println("Current Account Login Success");
 					f.setVisible(false);
 				}

@@ -12,15 +12,11 @@ public class BankDataBase {
 	Connection con;
 	PreparedStatement pst;
 	Statement st;
-	
-	public BankDataBase() throws Exception
+
+	public void createDB(String uname,String pass) throws Exception
 	{
 		Class.forName("com.mysql.cj.jdbc.Driver");
-		con = DriverManager.getConnection("jdbc:mysql://localhost:3306/", "root", "baluvinay123");
-	}
-	
-	public void createDB() throws Exception
-	{
+		con = DriverManager.getConnection("jdbc:mysql://localhost:3306/", uname, pass);
 		st = con.createStatement();
 		DatabaseMetaData dmd = con.getMetaData();
 		ResultSet r = dmd.getCatalogs();

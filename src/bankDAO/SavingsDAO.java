@@ -9,7 +9,7 @@ public class SavingsDAO {
 	Connection con;
 	Statement st;
 	Random rand = new Random();
-	SavingsAccount s = new SavingsAccount();
+	SavingsAccount s = new SavingsAccount(null, 0, 0);
 	
 	public SavingsDAO() throws Exception
 	{

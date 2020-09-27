@@ -13,7 +13,7 @@ public class CurrentDAO {
 	PreparedStatement pst;
 	Connection con;
 	Statement st;
-	CurrentAccount c = new CurrentAccount();
+	CurrentAccount c = new CurrentAccount(null, 0, 0);
 	
 	Random rand = new Random();
 	
