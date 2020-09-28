@@ -81,35 +81,18 @@ public class CurrentAccountLogin extends WindowAdapter implements ActionListener
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		CustomerInfo ci;
+		
 		try {
-			ci = new CustomerInfo();
 				if(t1.getText().equals("") && t2.getText().equals("") && e.getSource()==bcreate)
 				{
 					f.setVisible(false);
 					try {
-						new createAccount();
+						new createAccount().show(true);
+						new createAccount().show(false);
+						show(true);
 					} catch (Exception e1) {
 						show(true);
 					}
-				}
-				else if(ci.checkCurrentInfo(t2.getText(), t1.getText()) && e.getSource()==b1)
-				{
-					new CurrentAccount(null, 0, 0).show();
-					System.out.println("Current Account Login Success");
-					f.setVisible(false);
-				}
-				else if(ci.checkCurrentInfo(t2.getText(), "") && e.getSource()==b1)
-				{
-					l3.setText("Incorrect username");
-				}
-				else if(ci.checkCurrentInfo("", t1.getText()) && e.getSource()==b1)
-				{
-					l3.setText("Incorrect password");
-				}
-				else if(ci.checkCurrentInfo("", "") && e.getSource()==b1)
-				{
-					l3.setText("Enter Credentials");
 				}
 					
 			} catch (NumberFormatException e1) {
@@ -119,7 +102,34 @@ public class CurrentAccountLogin extends WindowAdapter implements ActionListener
 			}l3.setVisible(true);
 		}
 		
+	public void check() throws Exception
+	{
+	try
+		{
+			CustomerInfo ci = new CustomerInfo();
+				if(ci.checkCurrentInfo(t2.getText(), t1.getText()))
+				{
+					new CurrentAccount(null, 0, 0).show();
+					System.out.println("Current Account Login Success");
+					f.setVisible(false);
+				}
+				else if(ci.checkCurrentInfo(t2.getText(), ""))
+				{
+					l3.setText("Incorrect username");
+				}
+				else if(ci.checkCurrentInfo("", t1.getText()))
+				{
+					l3.setText("Incorrect password");
+				}
+				else if(ci.checkCurrentInfo("", ""))
+				{
+					l3.setText("Enter Credentials");
+				}
+		}catch (Exception e) {
+		e.printStackTrace();
+		}
 		
 		
 	}
+}
 

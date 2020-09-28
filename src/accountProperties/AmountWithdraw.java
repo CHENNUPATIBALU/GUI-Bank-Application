@@ -55,9 +55,12 @@ public class AmountWithdraw extends WindowAdapter implements ActionListener{
 		cd.currentWithdraw(accno, a);
 	}
 	
-	public void savingsWithDraw()
+	public void savingsWithDraw(long accno) throws Exception
 	{
-		
+		sd = new SavingsDAO();
+		this.accno = accno;
+		float a = Float.parseFloat(t1.getText());
+		sd.savingsWithdraw(accno, a);
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {

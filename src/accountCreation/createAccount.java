@@ -130,6 +130,10 @@ public class createAccount extends WindowAdapter implements ActionListener{
 		System.out.println("Current Account Created Successfully");
 	}
 	
+	public void show(boolean set)
+	{
+		f.setVisible(set);
+	}
 	public void windowClosing(WindowEvent e)
 	{
 		a = new AccountSelection();
