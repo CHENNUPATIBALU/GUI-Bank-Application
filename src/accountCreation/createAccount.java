@@ -13,6 +13,8 @@ import customerUI.CurrentAccount;
 import customerUI.SavingsAccount;
 import bankDAO.CurrentDAO;
 import bankGUI.AccountSelection;
+import bankGUI.CurrentAccountLogin;
+import bankGUI.SavingsAccountLogin;
 
 public class createAccount extends WindowAdapter implements ActionListener{
 
@@ -136,39 +138,33 @@ public class createAccount extends WindowAdapter implements ActionListener{
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		
+		CurrentAccountLogin c;
+		SavingsAccountLogin s;
 		if(rb1.isSelected() && e.getSource()==b1)
 		{
+			s = new SavingsAccountLogin();
 			l4.setText(""+accno);
-			try
-			{
-				try {
+			try {
 					new createAccount().createSavingsAccount(accno, t1.getText(), Float.parseFloat(t2.getText()),t3.getText(),t4.getText());
-				} catch (NumberFormatException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+					s.show(true);
+					f.setVisible(false);
 				} catch (Exception e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-			}
-			catch(Exception ae) {}
 		}
 		else if(rb2.isSelected() && e.getSource()==b1)
 		{
+			c = new CurrentAccountLogin();
 			l4.setText(""+accno);
-			try
-			{
-				try {
+			try {
 					new createAccount().createCurrentAccount(accno, t1.getText(), Float.parseFloat(t2.getText()),t3.getText(),t4.getText());
-				} catch (NumberFormatException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				} catch (Exception e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+					c.show(true);
+					f.setVisible(false);
 				}
-			}
-			catch(Exception ae) {}
+				catch (Exception e1) {
+					
+				}
 		}
 		else if(rb1.isSelected() && rb2.isSelected())
 		{

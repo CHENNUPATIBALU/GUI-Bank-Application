@@ -16,7 +16,8 @@ public class BankAdminLogin extends WindowAdapter implements ActionListener{
 	static JFrame f;
 	JLabel l1,l2;
 	JLabel l3;
-	JTextField t1,t2;
+	JTextField t1;
+	JPasswordField t2;
 	JButton b1;	
 	
 	public BankAdminLogin()
@@ -28,7 +29,7 @@ public class BankAdminLogin extends WindowAdapter implements ActionListener{
 		l3 = new JLabel();
 		
 		t1 = new JTextField();
-		t2 = new JTextField();
+		t2 = new JPasswordField();
 		
 		b1 = new JButton("Login");
 		

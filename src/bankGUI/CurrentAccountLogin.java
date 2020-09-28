@@ -8,6 +8,7 @@ import java.awt.event.WindowEvent;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import accountCreation.createAccount;
@@ -17,7 +18,8 @@ import customerUI.CustomerInfo;
 public class CurrentAccountLogin extends WindowAdapter implements ActionListener {
 
 	JFrame f;
-	JTextField t1,t2;
+	JTextField t1;
+	JPasswordField t2;
 	JLabel l1,l2,l3;
 	JButton b1,bcreate;
 	createAccount c;
@@ -31,7 +33,8 @@ public class CurrentAccountLogin extends WindowAdapter implements ActionListener
 		l3 = new JLabel();
 		
 		t1 = new JTextField();
-		t2 = new JTextField();
+		t2 = new JPasswordField();
+		
 		
 		b1 = new JButton("Login");
 		bcreate = new JButton("SignUp");
@@ -72,6 +75,10 @@ public class CurrentAccountLogin extends WindowAdapter implements ActionListener
 	{
 		System.exit(0);
 	}
+	public void show(boolean set)
+	{
+		f.setVisible(set);
+	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		CustomerInfo ci;
@@ -83,7 +90,7 @@ public class CurrentAccountLogin extends WindowAdapter implements ActionListener
 					try {
 						new createAccount();
 					} catch (Exception e1) {
-						e1.printStackTrace();
+						show(true);
 					}
 				}
 				else if(ci.checkCurrentInfo(t2.getText(), t1.getText()) && e.getSource()==b1)

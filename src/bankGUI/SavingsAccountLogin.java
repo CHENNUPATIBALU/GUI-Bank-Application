@@ -15,7 +15,8 @@ import customerUI.CustomerInfo;
 public class SavingsAccountLogin extends WindowAdapter implements ActionListener{
 
 	JFrame f;
-	JTextField t1,t2;
+	JTextField t1;
+	JPasswordField t2;
 	JLabel l1,l2,l3;
 	JButton b1,bcreate;
 	AccountSelection a;
@@ -29,7 +30,7 @@ public class SavingsAccountLogin extends WindowAdapter implements ActionListener
 		l3 = new JLabel();
 		
 		t1 = new JTextField();
-		t2 = new JTextField();
+		t2 = new JPasswordField();
 		
 		b1 = new JButton("Login");
 		bcreate = new JButton("SignUp");
@@ -111,6 +112,10 @@ public class SavingsAccountLogin extends WindowAdapter implements ActionListener
 				e1.printStackTrace();
 			}l3.setVisible(true);
 		}
+	public void show(boolean b) {
+		f.setVisible(b);
+		
+	}
 		
 		
 	}
