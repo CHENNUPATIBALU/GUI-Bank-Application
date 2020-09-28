@@ -89,8 +89,8 @@ public class BankAdminLogin extends WindowAdapter implements ActionListener{
 					a.FrameVisible(true);
 					b.createDB(t1.getText(),t2.getText());
 					b.createBankTB();
-					Thread.sleep(2000);
 					f.setTitle("-- Login Success --");
+					Thread.sleep(2000);
 					show(false);
 				}
 			catch (Exception e1) {
