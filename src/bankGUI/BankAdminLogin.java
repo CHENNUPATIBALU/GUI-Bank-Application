@@ -13,7 +13,7 @@ import javax.swing.*;
 
 public class BankAdminLogin extends WindowAdapter implements ActionListener{
 	
-	JFrame f;
+	static JFrame f;
 	JLabel l1,l2;
 	JLabel l3;
 	JTextField t1,t2;
@@ -63,7 +63,7 @@ public class BankAdminLogin extends WindowAdapter implements ActionListener{
 	{
 		System.exit(0);
 	}
-	public void show(boolean set)
+	public static void show(boolean set)
 	{
 		f.setVisible(set);
 	}
@@ -84,10 +84,12 @@ public class BankAdminLogin extends WindowAdapter implements ActionListener{
 		BankDataBase b = new BankDataBase();
 		if(e.getSource()==b1 && getAccess(true))
 		{
+			show(false);
 			try {
 					a.FrameVisible(true);
 					b.createDB(t1.getText(),t2.getText());
 					b.createBankTB();
+					Thread.sleep(2000);
 					f.setTitle("-- Login Success --");
 					show(false);
 				}

@@ -51,6 +51,8 @@ public class AccountSelection extends WindowAdapter implements ActionListener{
 	public void FrameVisible(boolean frame)
 	{
 		f.setVisible(frame);
+		BankAdminLogin.show(false);
+		
 	}
 	public void windowClosing(WindowEvent e)
 	{
