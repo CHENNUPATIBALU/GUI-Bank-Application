@@ -9,16 +9,17 @@ import bankDAO.*;
 
 import javax.swing.*;
 
+import com.mysql.cj.protocol.Message;
+
 
 
 public class BankAdminLogin extends WindowAdapter implements ActionListener{
 	
 	JFrame f;
 	JLabel l1,l2;
-	static JLabel l3;
+	JLabel l3;
 	JTextField t1,t2;
-	JButton b1;
-	
+	JButton b1;	
 	
 	public BankAdminLogin()
 	{
@@ -70,11 +71,10 @@ public class BankAdminLogin extends WindowAdapter implements ActionListener{
 		new BankAdminLogin();
 	}
 
-	public static boolean getAccess(boolean access)
+	public boolean getAccess(boolean access)
 	{
 		if(access)
 		{
-			l3.setText("Incorrect credentials");
 			return true;
 		}
 		return false;
@@ -83,18 +83,26 @@ public class BankAdminLogin extends WindowAdapter implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-		AccountSelection a;
-		if(e.getSource()==b1)
+		AccountSelection a = new AccountSelection();
+		BankDataBase b = new BankDataBase();
+		if(e.getSource()==b1 && getAccess(true))
 		{
-			a = new AccountSelection();
-			f.setVisible(false);
+			
+			
 			try {
+					f.setVisible(false);
 					a.FrameVisible(true);
-					BankDataBase b = new BankDataBase();
 					b.createDB(t1.getText(),t2.getText());
 					b.createBankTB();
 				}
-			catch (Exception e1) {}
+			catch (Exception e1) {
+				
+			}
+		}
+		else if(e.getSource()==b1 && getAccess(false))
+		{
+			a.FrameVisible(false);
+			l3.setText("Incorrect credentials");
 		}
 		
 	}

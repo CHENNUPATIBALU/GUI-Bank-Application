@@ -16,11 +16,13 @@ public class BankDataBase {
 
 	public void createDB(String uname,String pass) throws Exception
 	{
+		BankAdminLogin b = new BankAdminLogin();
 		try {
-		Class.forName("com.mysql.cj.jdbc.Driver");
-		con = DriverManager.getConnection("jdbc:mysql://localhost:3306/", uname, pass);
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/", uname, pass);
+			b.getAccess(true);
 		}catch(Exception e) {
-			BankAdminLogin.getAccess(false);
+			b.getAccess(false);
 		}
 		st = con.createStatement();
 		DatabaseMetaData dmd = con.getMetaData();
