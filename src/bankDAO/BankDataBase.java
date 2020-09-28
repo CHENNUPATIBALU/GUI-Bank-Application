@@ -22,6 +22,7 @@ public class BankDataBase {
 			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/", uname, pass);
 			b.getAccess(true);
 		}catch(Exception e) {
+			b.show(false);
 			b.getAccess(false);
 		}
 		st = con.createStatement();

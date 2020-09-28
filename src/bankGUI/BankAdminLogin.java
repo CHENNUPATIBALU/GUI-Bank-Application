@@ -9,8 +9,6 @@ import bankDAO.*;
 
 import javax.swing.*;
 
-import com.mysql.cj.protocol.Message;
-
 
 
 public class BankAdminLogin extends WindowAdapter implements ActionListener{
@@ -54,18 +52,21 @@ public class BankAdminLogin extends WindowAdapter implements ActionListener{
 		
 		f.setLayout(null);
 		f.setSize(450, 300);
-		f.setVisible(true);
 		f.addWindowListener(this);
 		
 		t1.addActionListener(this);
 		t2.addActionListener(this);
+		show(true);
 		b1.addActionListener(this);
 	}
 	public void windowClosing(WindowEvent e)
 	{
 		System.exit(0);
 	}
-	
+	public void show(boolean set)
+	{
+		f.setVisible(set);
+	}
 
 	public static void main(String[] args) throws Exception{
 		new BankAdminLogin();
@@ -73,11 +74,7 @@ public class BankAdminLogin extends WindowAdapter implements ActionListener{
 
 	public boolean getAccess(boolean access)
 	{
-		if(access)
-		{
-			return true;
-		}
-		return false;
+		return access;
 	}
 
 	@Override
@@ -87,22 +84,18 @@ public class BankAdminLogin extends WindowAdapter implements ActionListener{
 		BankDataBase b = new BankDataBase();
 		if(e.getSource()==b1 && getAccess(true))
 		{
-			
-			
 			try {
-					f.setVisible(false);
 					a.FrameVisible(true);
 					b.createDB(t1.getText(),t2.getText());
 					b.createBankTB();
+					f.setTitle("-- Login Success --");
+					show(false);
 				}
 			catch (Exception e1) {
-				
+				a.FrameVisible(false);
+				show(true);
+				f.setTitle("* Incorrect credentials *");
 			}
-		}
-		else if(e.getSource()==b1 && getAccess(false))
-		{
-			a.FrameVisible(false);
-			l3.setText("Incorrect credentials");
 		}
 		
 	}
