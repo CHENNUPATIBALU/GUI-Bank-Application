@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"accountCreation"},{"l":"accountProperties"},{"l":"All Packages","u":"allpackages-index.html"},{"l":"bankDAO"},{"l":"bankGUI"},{"l":"customerUI"}];updateSearchResults();
