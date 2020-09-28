@@ -14,7 +14,8 @@ import javax.swing.*;
 public class BankAdminLogin extends WindowAdapter implements ActionListener{
 	
 	JFrame f;
-	JLabel l1,l2,l3,l4;
+	JLabel l1,l2;
+	static JLabel l3;
 	JTextField t1,t2;
 	JButton b1;
 	
@@ -25,8 +26,7 @@ public class BankAdminLogin extends WindowAdapter implements ActionListener{
 		
 		l1 = new JLabel("Enter User Name: ");
 		l2 = new JLabel("Enter Password: ");
-		l3 = new JLabel("Incorrect username");
-		l4 = new JLabel("Incorrect password");
+		l3 = new JLabel();
 		
 		t1 = new JTextField();
 		t2 = new JTextField();
@@ -40,7 +40,6 @@ public class BankAdminLogin extends WindowAdapter implements ActionListener{
 		l1.setBounds(45, 40, 120, 20);
 		l2.setBounds(45, 90, 120, 20);
 		l3.setBounds(310, 40, 150, 30);
-		l4.setBounds(310, 90, 150, 30);
 		
 		f.add(l1);
 		f.add(l2);
@@ -48,13 +47,9 @@ public class BankAdminLogin extends WindowAdapter implements ActionListener{
 		f.add(t2);
 		f.add(b1);
 		f.add(l3);
-		f.add(l4);
 		
-		
-		
+
 		l3.setVisible(false);
-		l4.setVisible(false);
-		
 		
 		f.setLayout(null);
 		f.setSize(450, 300);
@@ -75,19 +70,32 @@ public class BankAdminLogin extends WindowAdapter implements ActionListener{
 		new BankAdminLogin();
 	}
 
+	public static boolean getAccess(boolean access)
+	{
+		if(access)
+		{
+			l3.setText("Incorrect credentials");
+			return true;
+		}
+		return false;
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-		AccountSelection a = new AccountSelection();
-		f.setVisible(false);
-		try {
-				a.FrameVisible(true);
-				BankDataBase b = new BankDataBase();
-				b.createDB(t1.getText(),t2.getText());
-				b.createBankTB();
-			} catch (Exception e1) {
-				e1.printStackTrace();
-			}
+		AccountSelection a;
+		if(e.getSource()==b1)
+		{
+			a = new AccountSelection();
+			f.setVisible(false);
+			try {
+					a.FrameVisible(true);
+					BankDataBase b = new BankDataBase();
+					b.createDB(t1.getText(),t2.getText());
+					b.createBankTB();
+				}
+			catch (Exception e1) {}
 		}
+		
+	}
 }
