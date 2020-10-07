@@ -16,6 +16,7 @@ public class BankDataBase {
 
 	public void createDB(String uname,String pass) throws Exception
 	{
+		boolean dbExists = true;
 		BankAdminLogin b = new BankAdminLogin();
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -32,13 +33,19 @@ public class BankDataBase {
 		{
 			if(r.getString(1).equalsIgnoreCase("bank"))
 			{
-				st.executeUpdate("drop database bank");
+				st.executeQuery("use bank");
+				System.out.println("Using Bank Database");
+				dbExists = false;
 			}
 		}
-		st.executeUpdate("create database bank");
-		System.out.println("Bank Database created");
-		st.executeQuery("use bank");
-		System.out.println("Using Bank Database");
+		if(!dbExists)
+		{
+			st.executeUpdate("create database bank");
+			System.out.println("Bank Database created");
+			st.executeQuery("use bank");
+			System.out.println("Using Bank Database");
+		}
+		
 	}
 	
 	public void createBankTB() throws Exception

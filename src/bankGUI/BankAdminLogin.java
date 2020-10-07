@@ -57,7 +57,7 @@ public class BankAdminLogin extends WindowAdapter implements ActionListener{
 		
 		t1.addActionListener(this);
 		t2.addActionListener(this);
-		show(true);
+		f.setVisible(true);
 		b1.addActionListener(this);
 	}
 	public void windowClosing(WindowEvent e)
