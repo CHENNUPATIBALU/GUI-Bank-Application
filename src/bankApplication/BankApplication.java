@@ -49,15 +49,17 @@ public class BankApplication extends WindowAdapter implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		BankAdminLogin b = new BankAdminLogin();
+		AccountSelection a = new AccountSelection();
 		if(e.getSource()==adminButton)
 		{
-			new BankAdminLogin();
-			
+			b.show(true);
+			a.FrameVisible(false);
 		}
 		if(e.getSource()==customerButton)
 		{
-			new AccountSelection().FrameVisible(true);
-			
+			b.show(false);
+			a.FrameVisible(true);
 		}
 		
 	}
