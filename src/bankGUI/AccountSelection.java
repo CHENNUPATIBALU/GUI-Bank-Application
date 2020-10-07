@@ -30,6 +30,7 @@ public class AccountSelection extends WindowAdapter implements ActionListener{
 		
 		f.setLayout(null);
 		f.setSize(450, 300);
+		f.setLocation(500, 90);
 		f.setVisible(false);
 		f.addWindowListener(this);
 	}
@@ -56,6 +57,7 @@ public class AccountSelection extends WindowAdapter implements ActionListener{
 	}
 	public void windowClosing(WindowEvent e)
 	{
-		System.exit(0);
+		FrameVisible(false);
+		f.dispose();
 	}
 }

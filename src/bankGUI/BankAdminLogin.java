@@ -62,7 +62,7 @@ public class BankAdminLogin extends WindowAdapter implements ActionListener{
 	}
 	public void windowClosing(WindowEvent e)
 	{
-		System.exit(0);
+		show(false);
 	}
 	public static void show(boolean set)
 	{
